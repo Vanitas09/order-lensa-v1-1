@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Order Lensa</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            background: #121417;
+            color: #F2F3F5;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 760px;
+            margin: auto;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+            margin-bottom: 28px;
+        }
+
+        .header h1 {
+            margin: 0 0 8px 0;
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            margin: 0;
+            color: #A7ADB5;
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           CARD
+        ========================= */
+
+        .card {
+            background: #1C2025;
+            border: 1px solid #292E35;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            margin-bottom: 20px;
+            font-size: 17px;
+            font-weight: 700;
+            color: #F2F3F5;
+        }
+
+
+        /* =========================
+           FIELD
+        ========================= */
+
+        .field {
+            margin-bottom: 18px;
+        }
+
+        .field:last-child {
+            margin-bottom: 0;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #A7ADB5;
+        }
+
+        .field input,
+        .field textarea,
+        .field select {
+            width: 100%;
+            border: 1px solid #343A42;
+            border-radius: 10px;
+            background: #15181C;
+            color: #F2F3F5;
+            font-size: 16px;
+            padding: 13px 14px;
+            outline: none;
+        }
+
+        .field input:focus,
+        .field textarea:focus,
+        .field select:focus {
+            border-color: #646B75;
+        }
+
+        .field textarea {
+            min-height: 90px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+
+        /* =========================
+           EYE TITLE
+        ========================= */
+
+        .eye-title {
+            font-size: 21px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #FFFFFF;
+        }
+
+
+        /* =========================
+           SPH
+        ========================= */
+
+        .sph-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sign-button {
+            width: 58px;
+            min-width: 58px;
+            height: 52px;
+
+            border: 1px solid #3A4048;
+            border-radius: 11px;
+
+            background: #252A30;
+            color: #FFFFFF;
+
+            font-size: 23px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition:
+                background 0.12s ease,
+                border-color 0.12s ease,
+                box-shadow 0.12s ease,
+                transform 0.08s ease;
+        }
+
+        .sign-button:hover {
+            background: #30363D;
+        }
+
+        .sign-button:active {
+            transform: scale(0.96);
+        }
+
+        .sign-button.active {
+            background: #4A5058;
+            border-color: #7A828E;
+
+            box-shadow:
+                inset 0 3px 5px rgba(0, 0, 0, 0.35),
+                0 1px 1px rgba(255, 255, 255, 0.05);
+        }
+
+        .sph-input {
+            flex: 1;
+            height: 52px;
+
+            border: 1px solid #343A42;
+            border-radius: 11px;
+
+            background: #15181C;
+            color: #FFFFFF;
+
+            font-size: 20px;
+            font-weight: 600;
+
+            padding: 0 14px;
+
+            outline: none;
+        }
+
+        .sph-input:focus {
+            border-color: #646B75;
+        }
+
+
+        /* =========================
+           CYL / ADD
+        ========================= */
+
+        .signed-input {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .fixed-sign {
+            width: 58px;
+            min-width: 58px;
+            height: 52px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid #343A42;
+            border-radius: 11px;
+
+            background: #252A30;
+            color: #FFFFFF;
+
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .signed-input input {
+            flex: 1;
+            height: 52px;
+
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+
+        /* =========================
+           AXIS
+        ========================= */
+
+        .axis-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .axis-row input {
+            width: 130px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .degree {
+            font-size: 22px;
+            color: #A7ADB5;
+        }
+
+
+        /* =========================
+           MAIN BUTTON
+        ========================= */
+
+        .main-button {
+            width: 100%;
+            height: 56px;
+
+            border: none;
+            border-radius: 12px;
+
+            background: #D92D2D;
+            color: #FFFFFF;
+
+            font-size: 17px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            margin-top: 4px;
+
+            transition:
+                background 0.15s ease,
+                transform 0.08s ease;
+        }
+
+        .main-button:hover {
+            background: #EF3B3B;
+        }
+
+        .main-button:active {
+            transform: scale(0.985);
+        }
+
+
+        /* =========================
+           HASIL ORDER
+        ========================= */
+
+        #hasilOrder {
+            display: none;
+
+            margin-top: 20px;
+
+            padding: 22px;
+
+            background: #1C2025;
+            border: 1px solid #292E35;
+            border-radius: 16px;
+
+            color: #F2F3F5;
+
+            line-height: 1.65;
+            font-size: 15px;
+
+            white-space: pre-wrap;
+            word-break: normal;
+
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        /* =========================
+           COPY BUTTON
+        ========================= */
+
+        .copy-button {
+            display: none;
+
+            width: 100%;
+            height: 52px;
+
+            margin-top: 12px;
+
+            border: 1px solid #3A4048;
+            border-radius: 11px;
+
+            background: #252A30;
+            color: #FFFFFF;
+
+            font-size: 16px;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        .copy-button:hover {
+            background: #30363D;
+        }
+
+        .copy-button:active {
+            transform: scale(0.985);
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 20px 12px;
+            }
+
+            .header h1 {
+                font-size: 26px;
+            }
+
+            .card {
+                padding: 18px;
+                border-radius: 14px;
+            }
+
+            .sign-button,
+            .fixed-sign {
+                width: 52px;
+                min-width: 52px;
+            }
+
+            .sph-input,
+            .signed-input input {
+                font-size: 18px;
+            }
+
+            .axis-row input {
+                width: 110px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <div class="header">
+
+        <h1>Order Lensa</h1>
+
+        <p>
+            Input resep dengan cepat dan rapi.
+        </p>
+
+    </div>
+
+
+
+    <!-- =========================
+         DATA PASIEN
+    ========================= -->
+
+    <div class="card">
+
+        <div class="card-title">
+            DATA PASIEN
+        </div>
+
+
+        <div class="field">
+
+            <label for="tanggal">
+                Tanggal
+            </label>
+
+            <input
+                type="date"
+                id="tanggal"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="nama">
+                Nama Pasien
+            </label>
+
+            <input
+                type="text"
+                id="nama"
+                placeholder="Nama pasien"
+            >
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="umur">
+                Umur
+            </label>
+
+            <input
+                type="number"
+                id="umur"
+                placeholder="Umur"
+                inputmode="numeric"
+            >
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         MATA KANAN
+    ========================= -->
+
+    <div class="card">
+
+        <div class="eye-title">
+            MATA KANAN (OD)
+        </div>
+
+
+        <!-- SPH -->
+
+        <div class="field">
+
+            <label>
+                SPH
+            </label>
+
+            <div class="sph-row">
+
+
+                <button
+                    type="button"
+                    id="minusKanan"
+                    class="sign-button active"
+                    onclick="pilihMinus('kanan')"
+                >
+                    −
+                </button>
+
+
+                <button
+                    type="button"
+                    id="plusKanan"
+                    class="sign-button"
+                    onclick="pilihPlus('kanan')"
+                >
+                    +
+                </button>
+
+
+                <input
+                    type="text"
+                    id="sphKanan"
+                    class="sph-input"
+                    placeholder="2.00"
+                    inputmode="decimal"
+                    onblur="formatResep(this)"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- CYL -->
+
+        <div class="field">
+
+            <label>
+                CYL
+            </label>
+
+            <div class="signed-input">
+
+                <div class="fixed-sign">
+                    −
+                </div>
+
+                <input
+                    type="text"
+                    id="cylKanan"
+                    placeholder="0.50"
+                    inputmode="decimal"
+                    onblur="formatResep(this)"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- AXIS -->
+
+        <div class="field">
+
+            <label>
+                AXIS
+            </label>
+
+            <div class="axis-row">
+
+                <input
+                    type="number"
+                    id="axisKanan"
+                    placeholder="90"
+                    inputmode="numeric"
+                >
+
+                <span class="degree">
+                    °
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         MATA KIRI
+    ========================= -->
+
+    <div class="card">
+
+        <div class="eye-title">
+            MATA KIRI (OS)
+        </div>
+
+
+        <!-- SPH -->
+
+        <div class="field">
+
+            <label>
+                SPH
+            </label>
+
+            <div class="sph-row">
+
+
+                <button
+                    type="button"
+                    id="minusKiri"
+                    class="sign-button active"
+                    onclick="pilihMinus('kiri')"
+                >
+                    −
+                </button>
+
+
+                <button
+                    type="button"
+                    id="plusKiri"
+                    class="sign-button"
+                    onclick="pilihPlus('kiri')"
+                >
+                    +
+                </button>
+
+
+                <input
+                    type="text"
+                    id="sphKiri"
+                    class="sph-input"
+                    placeholder="2.00"
+                    inputmode="decimal"
+                    onblur="formatResep(this)"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- CYL -->
+
+        <div class="field">
+
+            <label>
+                CYL
+            </label>
+
+            <div class="signed-input">
+
+                <div class="fixed-sign">
+                    −
+                </div>
+
+                <input
+                    type="text"
+                    id="cylKiri"
+                    placeholder="0.50"
+                    inputmode="decimal"
+                    onblur="formatResep(this)"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- AXIS -->
+
+        <div class="field">
+
+            <label>
+                AXIS
+            </label>
+
+            <div class="axis-row">
+
+                <input
+                    type="number"
+                    id="axisKiri"
+                    placeholder="90"
+                    inputmode="numeric"
+                >
+
+                <span class="degree">
+                    °
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         ADD
+    ========================= -->
+
+    <div class="card">
+
+        <div class="card-title">
+            ADD
+        </div>
+
+        <div class="signed-input">
+
+            <div class="fixed-sign">
+                +
+            </div>
+
+            <input
+                type="text"
+                id="add"
+                placeholder="1.00"
+                inputmode="decimal"
+                onblur="formatResep(this)"
+            >
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         LENSA
+    ========================= -->
+
+    <div class="card">
+
+        <div class="card-title">
+            LENSA YANG DIPESAN
+        </div>
+
+        <div class="field">
+
+            <input
+                type="text"
+                id="lensa"
+                placeholder="Contoh: Bluecut / Photocromic / Progressive"
+            >
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         KETERANGAN
+    ========================= -->
+
+    <div class="card">
+
+        <div class="card-title">
+            KETERANGAN / CATATAN
+        </div>
+
+        <div class="field">
+
+            <textarea
+                id="keterangan"
+                placeholder="Catatan tambahan..."
+            ></textarea>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         BUAT ORDER
+    ========================= -->
+
+    <button
+        class="main-button"
+        onclick="buatOrder()"
+    >
+        BUAT ORDER
+    </button>
+
+
+
+    <!-- =========================
+         HASIL ORDER
+    ========================= -->
+
+    <div id="hasilOrder"></div>
+
+
+
+    <!-- =========================
+         COPY ORDER
+    ========================= -->
+
+    <button
+        class="copy-button"
+        id="copyButton"
+        onclick="copyOrder()"
+    >
+        COPY ORDER
+    </button>
+
+
+</div>
+
+
+
+<script>
+
+
+    /* =========================
+       TANDA SPH
+    ========================= */
+
+    let tandaSphKanan = "−";
+
+    let tandaSphKiri = "−";
+
+
+
+    /* =========================
+       PILIH MINUS
+    ========================= */
+
+    function pilihMinus(mata) {
+
+
+        if (mata === "kanan") {
+
+            tandaSphKanan = "−";
+
+
+            document
+                .getElementById("minusKanan")
+                .classList.add("active");
+
+
+            document
+                .getElementById("plusKanan")
+                .classList.remove("active");
+
+        }
+
+
+        if (mata === "kiri") {
+
+            tandaSphKiri = "−";
+
+
+            document
+                .getElementById("minusKiri")
+                .classList.add("active");
+
+
+            document
+                .getElementById("plusKiri")
+                .classList.remove("active");
+
+        }
+
+    }
+
+
+
+    /* =========================
+       PILIH PLUS
+    ========================= */
+
+    function pilihPlus(mata) {
+
+
+        if (mata === "kanan") {
+
+            tandaSphKanan = "+";
+
+
+            document
+                .getElementById("plusKanan")
+                .classList.add("active");
+
+
+            document
+                .getElementById("minusKanan")
+                .classList.remove("active");
+
+        }
+
+
+        if (mata === "kiri") {
+
+            tandaSphKiri = "+";
+
+
+            document
+                .getElementById("plusKiri")
+                .classList.add("active");
+
+
+            document
+                .getElementById("minusKiri")
+                .classList.remove("active");
+
+        }
+
+    }
+
+
+
+    /* =========================
+       FORMAT RESEP
+       
+       75   → 0.75
+       125  → 1.25
+       200  → 2.00
+       500  → 5.00
+       1000 → 10.00
+       1025 → 10.25
+    ========================= */
+
+    function formatResep(input) {
+
+
+        let nilai =
+            input.value.trim();
+
+
+        if (nilai === "") {
+            return;
+        }
+
+
+        /* Input dengan titik */
+
+        if (nilai.includes(".")) {
+
+            let angka =
+                parseFloat(nilai);
+
+
+            if (!isNaN(angka)) {
+
+                input.value =
+                    angka.toFixed(2);
+
+            }
+
+            return;
+        }
+
+
+        /* Input angka biasa */
+
+        let angka =
+            parseInt(nilai, 10);
+
+
+        if (!isNaN(angka)) {
+
+            input.value =
+                (angka / 100).toFixed(2);
+
+        }
+
+    }
+
+
+
+    /* =========================
+       FORMAT TANGGAL
+    ========================= */
+
+    function formatTanggalIndonesia(tanggal) {
+
+
+        let bagian =
+            tanggal.split("-");
+
+
+        if (bagian.length !== 3) {
+
+            return tanggal;
+
+        }
+
+
+        let tahun =
+            bagian[0];
+
+        let bulan =
+            bagian[1];
+
+        let hari =
+            bagian[2];
+
+
+        return (
+            hari +
+            "-" +
+            bulan +
+            "-" +
+            tahun
+        );
+
+    }
+
+
+
+    /* =========================
+       BUAT ORDER
+    ========================= */
+
+    function buatOrder() {
+
+
+        /* Format resep */
+
+        formatResep(
+            document.getElementById("sphKanan")
+        );
+
+
+        formatResep(
+            document.getElementById("cylKanan")
+        );
+
+
+        formatResep(
+            document.getElementById("sphKiri")
+        );
+
+
+        formatResep(
+            document.getElementById("cylKiri")
+        );
+
+
+        formatResep(
+            document.getElementById("add")
+        );
+
+
+
+        /* =========================
+           AMBIL DATA
+        ========================= */
+
+        let tanggal =
+            document.getElementById("tanggal").value;
+
+
+        let nama =
+            document.getElementById("nama").value.trim();
+
+
+        let umur =
+            document.getElementById("umur").value.trim();
+
+
+
+        let sphKanan =
+            document.getElementById("sphKanan").value.trim();
+
+
+        let cylKanan =
+            document.getElementById("cylKanan").value.trim();
+
+
+        let axisKanan =
+            document.getElementById("axisKanan").value.trim();
+
+
+
+        let sphKiri =
+            document.getElementById("sphKiri").value.trim();
+
+
+        let cylKiri =
+            document.getElementById("cylKiri").value.trim();
+
+
+        let axisKiri =
+            document.getElementById("axisKiri").value.trim();
+
+
+
+        let add =
+            document.getElementById("add").value.trim();
+
+
+        let lensa =
+            document.getElementById("lensa").value.trim();
+
+
+        let keterangan =
+            document.getElementById("keterangan").value.trim();
+
+
+
+        /* =========================
+           FORMAT DATA
+        ========================= */
+
+        let tanggalTampil =
+            tanggal
+                ? formatTanggalIndonesia(tanggal)
+                : "-";
+
+
+        let namaTampil =
+            nama || "-";
+
+
+        let umurTampil =
+            umur
+                ? umur + " tahun"
+                : "-";
+
+
+
+        let sphKananTampil =
+            sphKanan
+                ? tandaSphKanan + sphKanan
+                : "-";
+
+
+        let cylKananTampil =
+            cylKanan
+                ? "−" + cylKanan
+                : "-";
+
+
+        let axisKananTampil =
+            axisKanan
+                ? axisKanan + "°"
+                : "-";
+
+
+
+        let sphKiriTampil =
+            sphKiri
+                ? tandaSphKiri + sphKiri
+                : "-";
+
+
+        let cylKiriTampil =
+            cylKiri
+                ? "−" + cylKiri
+                : "-";
+
+
+        let axisKiriTampil =
+            axisKiri
+                ? axisKiri + "°"
+                : "-";
+
+
+
+        let addTampil =
+            add
+                ? "+" + add
+                : "-";
+
+
+        let lensaTampil =
+            lensa || "-";
+
+
+        let keteranganTampil =
+            keterangan || "-";
+
+
+
+        /* =========================
+           TEKS ORDER
+           KHUSUS COPY WHATSAPP
+        ========================= */
+
+        let orderText =
+`ORDER LENSA
+────────────────
+Tanggal : ${tanggalTampil}
+Nama    : ${namaTampil}
+Umur    : ${umurTampil}
+
+MATA KANAN (OD)
+SPH  : ${sphKananTampil}
+CYL  : ${cylKananTampil}
+AXIS : ${axisKananTampil}
+
+MATA KIRI (OS)
+SPH  : ${sphKiriTampil}
+CYL  : ${cylKiriTampil}
+AXIS : ${axisKiriTampil}
+
+ADD : ${addTampil}
+
+Lensa :
+${lensaTampil}
+
+Keterangan :
+${keteranganTampil}
+────────────────`;
+
+
+
+        /* =========================
+           TAMPILKAN HASIL
+        ========================= */
+
+        let hasilOrder =
+            document.getElementById("hasilOrder");
+
+
+        hasilOrder.innerText =
+            orderText;
+
+
+        hasilOrder.style.display =
+            "block";
+
+
+        document.getElementById("copyButton")
+            .style.display =
+            "block";
+
+
+
+        /* Simpan teks asli */
+
+        hasilOrder.dataset.orderText =
+            orderText;
+
+    }
+
+
+
+    /* =========================
+       COPY ORDER
+    ========================= */
+
+    function copyOrder() {
+
+
+        let hasilOrder =
+            document.getElementById("hasilOrder");
+
+
+        let orderText =
+            hasilOrder.dataset.orderText ||
+            hasilOrder.innerText;
+
+
+
+        navigator.clipboard
+            .writeText(orderText)
+
+            .then(function() {
+
+                alert(
+                    "Order berhasil dicopy."
+                );
+
+            })
+
+            .catch(function() {
+
+                alert(
+                    "Gagal copy order."
+                );
+
+            });
+
+    }
+
+
+
+    /* =========================
+       TANGGAL OTOMATIS
+    ========================= */
+
+    window.onload = function() {
+
+
+        let sekarang =
+            new Date();
+
+
+        let tahun =
+            sekarang.getFullYear();
+
+
+        let bulan =
+            String(
+                sekarang.getMonth() + 1
+            ).padStart(2, "0");
+
+
+        let hari =
+            String(
+                sekarang.getDate()
+            ).padStart(2, "0");
+
+
+
+        document
+            .getElementById("tanggal")
+            .value =
+            tahun +
+            "-" +
+            bulan +
+            "-" +
+            hari;
+
+
+
+        /* Default SPH = MINUS */
+
+        document
+            .getElementById("minusKanan")
+            .classList.add("active");
+
+
+        document
+            .getElementById("minusKiri")
+            .classList.add("active");
+
+    };
+
+
+</script>
+
+</body>
+</html>
