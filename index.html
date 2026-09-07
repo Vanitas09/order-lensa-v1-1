@@ -1,431 +1,933 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Order Lensa</title>
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            padding: 40px 20px;
-            background: #121417;
-            color: #F2F3F5;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 760px;
-            margin: auto;
-        }
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        .header {
-            margin-bottom: 28px;
-        }
-
-        .header h1 {
-            margin: 0 0 8px 0;
-            font-size: 30px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        .header p {
-            margin: 0;
-            color: #A7ADB5;
-            font-size: 15px;
-        }
-
-
-        /* =========================
-           CARD
-        ========================= */
-
-        .card {
-            background: #1C2025;
-            border: 1px solid #292E35;
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 16px;
-        }
-
-        .card-title {
-            margin-bottom: 20px;
-            font-size: 17px;
-            font-weight: 700;
-            color: #F2F3F5;
-        }
-
-
-        /* =========================
-           FIELD
-        ========================= */
-
-        .field {
-            margin-bottom: 18px;
-        }
-
-        .field:last-child {
-            margin-bottom: 0;
-        }
-
-        .field label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            color: #A7ADB5;
-        }
-
-        .field input,
-        .field textarea,
-        .field select {
-            width: 100%;
-            border: 1px solid #343A42;
-            border-radius: 10px;
-            background: #15181C;
-            color: #F2F3F5;
-            font-size: 16px;
-            padding: 13px 14px;
-            outline: none;
-        }
-
-        .field input:focus,
-        .field textarea:focus,
-        .field select:focus {
-            border-color: #646B75;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        .field textarea {
-            min-height: 90px;
-            resize: vertical;
-            font-family: inherit;
-        }
+<title>Order Lensa - Optik Lembuswana</title>
 
+<style>
+* {
+    box-sizing: border-box;
+}
 
-        /* =========================
-           EYE TITLE
-        ========================= */
+:root {
+    --merah: #d92d2d;
+    --merah-gelap: #b91f1f;
+    --merah-muda: #fff1f1;
 
-        .eye-title {
-            font-size: 21px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #FFFFFF;
-        }
+    --hijau: #15803d;
+    --hijau-muda: #f0fdf4;
 
+    --biru: #2563eb;
+    --biru-muda: #eff6ff;
 
-        /* =========================
-           SPH
-        ========================= */
+    --putih: #ffffff;
+    --bg: #f4f6f8;
 
-        .sph-row {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+    --text: #17191c;
+    --text2: #656b73;
 
-        .sign-button {
-            width: 58px;
-            min-width: 58px;
-            height: 52px;
+    --border: #dfe3e8;
 
-            border: 1px solid #3A4048;
-            border-radius: 11px;
+    --shadow: 0 4px 18px rgba(0,0,0,.06);
 
-            background: #252A30;
-            color: #FFFFFF;
+    --radius: 16px;
+}
 
-            font-size: 23px;
-            font-weight: bold;
+body {
+    margin: 0;
+    padding: 20px 12px 50px;
 
-            cursor: pointer;
+    background: var(--bg);
+    color: var(--text);
 
-            transition:
-                background 0.12s ease,
-                border-color 0.12s ease,
-                box-shadow 0.12s ease,
-                transform 0.08s ease;
-        }
-
-        .sign-button:hover {
-            background: #30363D;
-        }
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
 
-        .sign-button:active {
-            transform: scale(0.96);
-        }
+.container {
+    width: 100%;
+    max-width: 760px;
+    margin: auto;
+}
 
-        .sign-button.active {
-            background: #4A5058;
-            border-color: #7A828E;
+/* =========================================================
+   HEADER
+========================================================= */
 
-            box-shadow:
-                inset 0 3px 5px rgba(0, 0, 0, 0.35),
-                0 1px 1px rgba(255, 255, 255, 0.05);
-        }
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-        .sph-input {
-            flex: 1;
-            height: 52px;
+.header-title {
+    margin: 0;
 
-            border: 1px solid #343A42;
-            border-radius: 11px;
+    font-size: 32px;
+    line-height: 1.1;
+    font-weight: 900;
 
-            background: #15181C;
-            color: #FFFFFF;
+    letter-spacing: .5px;
+}
 
-            font-size: 20px;
-            font-weight: 600;
+.header-optik {
+    margin-top: 7px;
 
-            padding: 0 14px;
+    font-size: 19px;
+    font-weight: 900;
 
-            outline: none;
-        }
+    color: var(--merah);
+    letter-spacing: .8px;
+}
 
-        .sph-input:focus {
-            border-color: #646B75;
-        }
+.header-made {
+    margin-top: 6px;
 
+    color: var(--text2);
 
-        /* =========================
-           CYL / ADD
-        ========================= */
+    font-size: 14px;
+    font-weight: 700;
+}
 
-        .signed-input {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+/* =========================================================
+   CARD
+========================================================= */
 
-        .fixed-sign {
-            width: 58px;
-            min-width: 58px;
-            height: 52px;
+.card {
+    background: var(--putih);
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
 
-            border: 1px solid #343A42;
-            border-radius: 11px;
+    padding: 20px;
+    margin-bottom: 14px;
 
-            background: #252A30;
-            color: #FFFFFF;
+    box-shadow: var(--shadow);
+}
 
-            font-size: 23px;
-            font-weight: bold;
-        }
+.card-title {
+    margin-bottom: 17px;
 
-        .signed-input input {
-            flex: 1;
-            height: 52px;
+    font-size: 19px;
+    font-weight: 900;
+}
 
-            font-size: 20px;
-            font-weight: 600;
-        }
+.card-subtitle {
+    margin-top: -9px;
+    margin-bottom: 17px;
 
+    color: var(--text2);
 
-        /* =========================
-           AXIS
-        ========================= */
+    font-size: 14px;
+    line-height: 1.5;
+}
 
-        .axis-row {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+/* =========================================================
+   FIELD
+========================================================= */
 
-        .axis-row input {
-            width: 130px;
-            text-align: center;
-            font-size: 20px;
-            font-weight: 600;
-        }
+.field {
+    margin-bottom: 17px;
+}
 
-        .degree {
-            font-size: 22px;
-            color: #A7ADB5;
-        }
+.field:last-child {
+    margin-bottom: 0;
+}
 
+label {
+    display: block;
 
-        /* =========================
-           MAIN BUTTON
-        ========================= */
+    margin-bottom: 8px;
 
-        .main-button {
-            width: 100%;
-            height: 56px;
+    font-size: 15px;
+    font-weight: 800;
+}
 
-            border: none;
-            border-radius: 12px;
+input,
+textarea,
+select {
+    width: 100%;
 
-            background: #D92D2D;
-            color: #FFFFFF;
+    min-height: 52px;
 
-            font-size: 17px;
-            font-weight: 700;
+    border: 2px solid var(--border);
+    border-radius: 12px;
 
-            cursor: pointer;
+    background: white;
+    color: var(--text);
 
-            margin-top: 4px;
+    padding: 12px 14px;
 
-            transition:
-                background 0.15s ease,
-                transform 0.08s ease;
-        }
+    font-family: inherit;
+    font-size: 17px;
 
-        .main-button:hover {
-            background: #EF3B3B;
-        }
+    outline: none;
 
-        .main-button:active {
-            transform: scale(0.985);
-        }
+    transition: .15s;
+}
 
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--biru);
 
-        /* =========================
-           HASIL ORDER
-        ========================= */
+    box-shadow:
+        0 0 0 3px rgba(37,99,235,.10);
+}
 
-        #hasilOrder {
-            display: none;
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
 
-            margin-top: 20px;
+::placeholder {
+    color: #a0a5ab;
+}
 
-            padding: 22px;
+/* =========================================================
+   PASIEN
+========================================================= */
 
-            background: #1C2025;
-            border: 1px solid #292E35;
-            border-radius: 16px;
+.patient-grid {
+    display: grid;
 
-            color: #F2F3F5;
+    grid-template-columns: 1.5fr .7fr;
 
-            line-height: 1.65;
-            font-size: 15px;
+    gap: 12px;
+}
 
-            white-space: pre-wrap;
-            word-break: normal;
+/* =========================================================
+   MATA
+========================================================= */
 
-            font-family: Arial, Helvetica, sans-serif;
-        }
+.eye-title-row {
+    display: flex;
 
+    align-items: center;
+    justify-content: space-between;
 
-        /* =========================
-           COPY BUTTON
-        ========================= */
+    margin-bottom: 20px;
+}
 
-        .copy-button {
-            display: none;
+.eye-title {
+    font-size: 22px;
+    font-weight: 900;
+}
 
-            width: 100%;
-            height: 52px;
+.eye-badge {
+    padding: 7px 12px;
 
-            margin-top: 12px;
+    border-radius: 999px;
 
-            border: 1px solid #3A4048;
-            border-radius: 11px;
+    background: var(--biru-muda);
+    color: var(--biru);
 
-            background: #252A30;
-            color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 900;
+}
 
-            font-size: 16px;
-            font-weight: 700;
+/* =========================================================
+   RESEP
+========================================================= */
 
-            cursor: pointer;
-        }
+.prescription-row {
+    display: flex;
 
-        .copy-button:hover {
-            background: #30363D;
-        }
+    align-items: center;
 
-        .copy-button:active {
-            transform: scale(0.985);
-        }
+    gap: 8px;
+}
 
+.sign-button {
+    flex: 0 0 58px;
 
-        /* =========================
-           MOBILE
-        ========================= */
+    width: 58px;
+    height: 54px;
 
-        @media (max-width: 600px) {
+    border: 2px solid #d5d9de;
+    border-radius: 12px;
 
-            body {
-                padding: 20px 12px;
-            }
+    background: #f4f5f7;
+    color: #30343a;
 
-            .header h1 {
-                font-size: 26px;
-            }
+    font-size: 24px;
+    font-weight: 900;
 
-            .card {
-                padding: 18px;
-                border-radius: 14px;
-            }
+    cursor: pointer;
+}
 
-            .sign-button,
-            .fixed-sign {
-                width: 52px;
-                min-width: 52px;
-            }
+.sign-button:hover {
+    background: #e9ebee;
+}
 
-            .sph-input,
-            .signed-input input {
-                font-size: 18px;
-            }
+.sign-button.active {
+    border-color: var(--merah);
+    background: var(--merah);
+    color: white;
 
-            .axis-row input {
-                width: 110px;
-            }
+    box-shadow:
+        0 3px 8px rgba(217,45,45,.2);
+}
 
-        }
+.prescription-input {
+    flex: 1;
 
-    </style>
+    text-align: center;
+
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.degree {
+    font-size: 25px;
+    font-weight: 700;
+
+    color: var(--text2);
+}
+
+.fixed-sign {
+    flex: 0 0 58px;
+
+    width: 58px;
+    height: 54px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #d5d9de;
+    border-radius: 12px;
+
+    background: #f4f5f7;
+
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.helper {
+    margin-top: 7px;
+
+    color: var(--text2);
+
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+/* =========================================================
+   LENSA
+========================================================= */
+
+.lens-search-wrap {
+    position: relative;
+}
+
+.lens-results {
+    display: none;
+
+    margin-top: 6px;
+
+    border: 2px solid var(--border);
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    background: white;
+}
+
+.lens-results.show {
+    display: block;
+}
+
+.lens-result-item {
+    padding: 14px;
+
+    border-bottom: 1px solid var(--border);
+
+    cursor: pointer;
+
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.lens-result-item:last-child {
+    border-bottom: none;
+}
+
+.lens-result-item:hover {
+    background: var(--biru-muda);
+}
+
+.lens-result-empty {
+    padding: 14px;
+
+    color: var(--text2);
+
+    font-size: 14px;
+}
+
+.selected-box {
+    display: none;
+
+    margin-top: 10px;
+
+    padding: 13px 14px;
+
+    border: 2px solid #bbf7d0;
+    border-radius: 12px;
+
+    background: var(--hijau-muda);
+}
+
+.selected-box.show {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+.selected-label {
+    color: var(--text2);
+
+    font-size: 13px;
+}
+
+.selected-name {
+    margin-top: 3px;
+
+    font-size: 17px;
+    font-weight: 900;
+
+    color: var(--hijau);
+}
+
+.clear-button {
+    min-height: 42px;
+
+    border: 1px solid #f1a0a0;
+    border-radius: 10px;
+
+    background: white;
+    color: var(--merah);
+
+    padding: 0 12px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.save-new-button {
+    width: 100%;
+
+    min-height: 50px;
+
+    margin-top: 10px;
+
+    border: 2px solid var(--biru);
+    border-radius: 11px;
+
+    background: var(--biru-muda);
+    color: var(--biru);
+
+    font-size: 15px;
+    font-weight: 900;
+
+    cursor: pointer;
+}
+
+/* =========================================================
+   LAB
+========================================================= */
+
+.lab-info {
+    display: none;
+
+    margin-top: 10px;
+
+    padding: 13px 14px;
+
+    border-radius: 12px;
+
+    background: var(--biru-muda);
+
+    color: var(--biru);
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.lab-info.show {
+    display: block;
+}
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.main-button {
+    width: 100%;
+
+    min-height: 62px;
+
+    border: none;
+    border-radius: 14px;
+
+    background: var(--merah);
+    color: white;
+
+    font-size: 18px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 12px rgba(217,45,45,.18);
+}
+
+.main-button:hover {
+    background: var(--merah-gelap);
+}
+
+.secondary-button {
+    min-height: 48px;
+
+    border: 2px solid #d5d9de;
+    border-radius: 11px;
+
+    background: white;
+    color: #30343a;
+
+    padding: 0 15px;
+
+    font-size: 15px;
+    font-weight: 900;
+
+    cursor: pointer;
+}
+
+.secondary-button:hover {
+    background: #f5f6f7;
+}
+
+/* =========================================================
+   HASIL ORDER
+========================================================= */
+
+#hasilOrder {
+    display: none;
+
+    margin-top: 15px;
+
+    padding: 20px;
+
+    border: 2px solid var(--border);
+    border-radius: 14px;
+
+    background: white;
+
+    white-space: pre-wrap;
+
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+.result-title {
+    margin-bottom: 10px;
+
+    font-size: 17px;
+    font-weight: 900;
+}
+
+.order-actions {
+    display: none;
+
+    margin-top: 12px;
+
+    gap: 9px;
+
+    flex-direction: column;
+}
+
+.order-actions.show {
+    display: flex;
+}
+
+.action-button {
+    width: 100%;
+
+    min-height: 56px;
+
+    border-radius: 12px;
+
+    padding: 12px 15px;
+
+    font-size: 16px;
+    font-weight: 900;
+
+    cursor: pointer;
+}
+
+.copy-button {
+    border: 2px solid var(--biru);
+
+    background: var(--biru-muda);
+    color: var(--biru);
+}
+
+.wa-button {
+    border: 2px solid var(--hijau);
+
+    background: var(--hijau);
+    color: white;
+}
+
+/* =========================================================
+   MANAGEMENT
+========================================================= */
+
+.management-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+.management-header .card-title {
+    margin-bottom: 0;
+}
+
+.management-toggle {
+    min-height: 44px;
+
+    border: 2px solid #d5d9de;
+    border-radius: 11px;
+
+    background: #f7f7f8;
+
+    padding: 0 14px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+}
+
+.management-body {
+    display: none;
+
+    margin-top: 20px;
+}
+
+.management-body.show {
+    display: block;
+}
+
+.manage-add-row {
+    display: grid;
+
+    grid-template-columns: 1fr auto;
+
+    gap: 8px;
+
+    margin-bottom: 14px;
+}
+
+.manage-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.manage-item {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding: 13px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: #fafafa;
+}
+
+.manage-item-name {
+    font-size: 16px;
+    font-weight: 900;
+
+    word-break: break-word;
+}
+
+.manage-item-info {
+    margin-top: 4px;
+
+    color: var(--text2);
+
+    font-size: 13px;
+}
+
+.manage-actions {
+    display: flex;
+
+    gap: 6px;
+
+    flex-shrink: 0;
+}
+
+.small-button {
+    width: 44px;
+    height: 42px;
+
+    border: 1px solid #d5d9de;
+    border-radius: 10px;
+
+    background: white;
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+.empty-message {
+    padding: 18px;
+
+    border: 1px dashed #cfd3d8;
+    border-radius: 12px;
+
+    background: #fafafa;
+
+    color: var(--text2);
+
+    text-align: center;
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal-overlay {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 16px;
+
+    background: rgba(0,0,0,.45);
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal {
+    width: 100%;
+    max-width: 460px;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 22px;
+
+    border-radius: 18px;
+
+    background: white;
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.20);
+}
+
+.modal-title {
+    margin-bottom: 18px;
+
+    font-size: 21px;
+    font-weight: 900;
+}
+
+.modal-actions {
+    display: flex;
+
+    gap: 8px;
+
+    margin-top: 18px;
+}
+
+.modal-actions button {
+    flex: 1;
+}
+
+.cancel-button,
+.save-button {
+    min-height: 50px;
+
+    border-radius: 11px;
+
+    font-size: 15px;
+    font-weight: 900;
+
+    cursor: pointer;
+}
+
+.cancel-button {
+    border: 2px solid #d5d9de;
+    background: white;
+}
+
+.save-button {
+    border: none;
+    background: var(--merah);
+    color: white;
+}
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast {
+    position: fixed;
+
+    left: 50%;
+    bottom: 20px;
+
+    z-index: 2000;
+
+    width: calc(100% - 28px);
+    max-width: 500px;
+
+    transform: translate(-50%, 120px);
+
+    padding: 14px 16px;
+
+    border-radius: 12px;
+
+    background: #20242a;
+    color: white;
+
+    text-align: center;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    opacity: 0;
+
+    transition: .2s;
+}
+
+.toast.show {
+    transform: translate(-50%, 0);
+
+    opacity: 1;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width:600px) {
+
+    body {
+        padding: 15px 9px 40px;
+    }
+
+    .header-title {
+        font-size: 28px;
+    }
+
+    .header-optik {
+        font-size: 17px;
+    }
+
+    .card {
+        padding: 17px;
+        border-radius: 14px;
+    }
+
+    .patient-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .eye-title {
+        font-size: 20px;
+    }
+
+    .sign-button,
+    .fixed-sign {
+        flex-basis: 54px;
+        width: 54px;
+    }
+
+    .prescription-input {
+        font-size: 19px;
+    }
+
+    .manage-add-row {
+        grid-template-columns: 1fr;
+    }
+
+    .manage-add-row button {
+        width: 100%;
+    }
+
+    .manage-item {
+        align-items: flex-start;
+    }
+}
+</style>
 </head>
-
 
 <body>
 
 <div class="container">
 
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
-    <!-- =========================
-         HEADER
-    ========================= -->
+<div class="header">
 
-    <div class="header">
-
-        <h1>Order Lensa</h1>
-
-        <p>
-            Input resep dengan cepat dan rapi.
-        </p>
-
+    <div class="header-title">
+        ORDER LENSA
     </div>
 
+    <div class="header-optik">
+        OPTIK LEMBUSWANA
+    </div>
+
+    <div class="header-made">
+        Dibuat oleh Ozi • V1.1
+    </div>
+
+</div>
 
 
-    <!-- =========================
-         DATA PASIEN
-    ========================= -->
+<!-- =========================================================
+     DATA PASIEN
+========================================================= -->
 
-    <div class="card">
+<div class="card">
 
-        <div class="card-title">
-            DATA PASIEN
-        </div>
+    <div class="card-title">
+        👤 DATA PASIEN
+    </div>
 
+    <div class="patient-grid">
 
         <div class="field">
 
@@ -440,22 +942,6 @@
 
         </div>
 
-
-        <div class="field">
-
-            <label for="nama">
-                Nama Pasien
-            </label>
-
-            <input
-                type="text"
-                id="nama"
-                placeholder="Nama pasien"
-            >
-
-        </div>
-
-
         <div class="field">
 
             <label for="umur">
@@ -467,874 +953,3258 @@
                 id="umur"
                 placeholder="Umur"
                 inputmode="numeric"
+                min="0"
+                max="120"
             >
 
         </div>
 
     </div>
 
+    <div class="field">
 
+        <label for="nama">
+            Nama Pasien
+        </label>
 
-    <!-- =========================
-         MATA KANAN
-    ========================= -->
-
-    <div class="card">
-
-        <div class="eye-title">
-            MATA KANAN (OD)
-        </div>
-
-
-        <!-- SPH -->
-
-        <div class="field">
-
-            <label>
-                SPH
-            </label>
-
-            <div class="sph-row">
-
-
-                <button
-                    type="button"
-                    id="minusKanan"
-                    class="sign-button active"
-                    onclick="pilihMinus('kanan')"
-                >
-                    −
-                </button>
-
-
-                <button
-                    type="button"
-                    id="plusKanan"
-                    class="sign-button"
-                    onclick="pilihPlus('kanan')"
-                >
-                    +
-                </button>
-
-
-                <input
-                    type="text"
-                    id="sphKanan"
-                    class="sph-input"
-                    placeholder="2.00"
-                    inputmode="decimal"
-                    onblur="formatResep(this)"
-                >
-
-            </div>
-
-        </div>
-
-
-        <!-- CYL -->
-
-        <div class="field">
-
-            <label>
-                CYL
-            </label>
-
-            <div class="signed-input">
-
-                <div class="fixed-sign">
-                    −
-                </div>
-
-                <input
-                    type="text"
-                    id="cylKanan"
-                    placeholder="0.50"
-                    inputmode="decimal"
-                    onblur="formatResep(this)"
-                >
-
-            </div>
-
-        </div>
-
-
-        <!-- AXIS -->
-
-        <div class="field">
-
-            <label>
-                AXIS
-            </label>
-
-            <div class="axis-row">
-
-                <input
-                    type="number"
-                    id="axisKanan"
-                    placeholder="90"
-                    inputmode="numeric"
-                >
-
-                <span class="degree">
-                    °
-                </span>
-
-            </div>
-
-        </div>
+        <input
+            type="text"
+            id="nama"
+            placeholder="Masukkan nama pasien"
+            autocomplete="name"
+        >
 
     </div>
-
-
-
-    <!-- =========================
-         MATA KIRI
-    ========================= -->
-
-    <div class="card">
-
-        <div class="eye-title">
-            MATA KIRI (OS)
-        </div>
-
-
-        <!-- SPH -->
-
-        <div class="field">
-
-            <label>
-                SPH
-            </label>
-
-            <div class="sph-row">
-
-
-                <button
-                    type="button"
-                    id="minusKiri"
-                    class="sign-button active"
-                    onclick="pilihMinus('kiri')"
-                >
-                    −
-                </button>
-
-
-                <button
-                    type="button"
-                    id="plusKiri"
-                    class="sign-button"
-                    onclick="pilihPlus('kiri')"
-                >
-                    +
-                </button>
-
-
-                <input
-                    type="text"
-                    id="sphKiri"
-                    class="sph-input"
-                    placeholder="2.00"
-                    inputmode="decimal"
-                    onblur="formatResep(this)"
-                >
-
-            </div>
-
-        </div>
-
-
-        <!-- CYL -->
-
-        <div class="field">
-
-            <label>
-                CYL
-            </label>
-
-            <div class="signed-input">
-
-                <div class="fixed-sign">
-                    −
-                </div>
-
-                <input
-                    type="text"
-                    id="cylKiri"
-                    placeholder="0.50"
-                    inputmode="decimal"
-                    onblur="formatResep(this)"
-                >
-
-            </div>
-
-        </div>
-
-
-        <!-- AXIS -->
-
-        <div class="field">
-
-            <label>
-                AXIS
-            </label>
-
-            <div class="axis-row">
-
-                <input
-                    type="number"
-                    id="axisKiri"
-                    placeholder="90"
-                    inputmode="numeric"
-                >
-
-                <span class="degree">
-                    °
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =========================
-         ADD
-    ========================= -->
-
-    <div class="card">
-
-        <div class="card-title">
-            ADD
-        </div>
-
-        <div class="signed-input">
-
-            <div class="fixed-sign">
-                +
-            </div>
-
-            <input
-                type="text"
-                id="add"
-                placeholder="1.00"
-                inputmode="decimal"
-                onblur="formatResep(this)"
-            >
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =========================
-         LENSA
-    ========================= -->
-
-    <div class="card">
-
-        <div class="card-title">
-            LENSA YANG DIPESAN
-        </div>
-
-        <div class="field">
-
-            <input
-                type="text"
-                id="lensa"
-                placeholder="Contoh: Bluecut / Photocromic / Progressive"
-            >
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =========================
-         KETERANGAN
-    ========================= -->
-
-    <div class="card">
-
-        <div class="card-title">
-            KETERANGAN / CATATAN
-        </div>
-
-        <div class="field">
-
-            <textarea
-                id="keterangan"
-                placeholder="Catatan tambahan..."
-            ></textarea>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =========================
-         BUAT ORDER
-    ========================= -->
-
-    <button
-        class="main-button"
-        onclick="buatOrder()"
-    >
-        BUAT ORDER
-    </button>
-
-
-
-    <!-- =========================
-         HASIL ORDER
-    ========================= -->
-
-    <div id="hasilOrder"></div>
-
-
-
-    <!-- =========================
-         COPY ORDER
-    ========================= -->
-
-    <button
-        class="copy-button"
-        id="copyButton"
-        onclick="copyOrder()"
-    >
-        COPY ORDER
-    </button>
-
 
 </div>
 
 
+<!-- =========================================================
+     MATA KANAN
+========================================================= -->
+
+<div class="card">
+
+    <div class="eye-title-row">
+
+        <div class="eye-title">
+            MATA KANAN
+        </div>
+
+        <div class="eye-badge">
+            OD
+        </div>
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+            SPH
+        </label>
+
+        <div class="prescription-row">
+
+            <button
+                type="button"
+                id="minusSphKanan"
+                class="sign-button"
+                onclick="pilihSph('kanan','-')"
+            >
+                −
+            </button>
+
+            <button
+                type="button"
+                id="plusSphKanan"
+                class="sign-button"
+                onclick="pilihSph('kanan','+')"
+            >
+                +
+            </button>
+
+            <input
+                type="text"
+                id="sphKanan"
+                class="prescription-input"
+                placeholder="Masukkan SPH"
+                inputmode="decimal"
+                autocomplete="off"
+                onblur="formatResepSigned(this,'kanan','sph')"
+            >
+
+        </div>
+
+        <div class="helper">
+            Pilih − atau +, lalu ketik angka. Contoh 200 → 2.00
+        </div>
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+            CYL
+        </label>
+
+        <div class="prescription-row">
+
+            <button
+                type="button"
+                id="minusCylKanan"
+                class="sign-button"
+                onclick="pilihCyl('kanan','-')"
+            >
+                −
+            </button>
+
+            <button
+                type="button"
+                id="plusCylKanan"
+                class="sign-button"
+                onclick="pilihCyl('kanan','+')"
+            >
+                +
+            </button>
+
+            <input
+                type="text"
+                id="cylKanan"
+                class="prescription-input"
+                placeholder="Masukkan CYL"
+                inputmode="decimal"
+                autocomplete="off"
+                onblur="formatResepSigned(this,'kanan','cyl')"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+            AXIS
+        </label>
+
+        <div class="prescription-row">
+
+            <input
+                type="text"
+                id="axisKanan"
+                class="prescription-input"
+                placeholder="Contoh 90"
+                inputmode="numeric"
+                maxlength="3"
+                autocomplete="off"
+            >
+
+            <span class="degree">
+                °
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     MATA KIRI
+========================================================= -->
+
+<div class="card">
+
+    <div class="eye-title-row">
+
+        <div class="eye-title">
+            MATA KIRI
+        </div>
+
+        <div class="eye-badge">
+            OS
+        </div>
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+            SPH
+        </label>
+
+        <div class="prescription-row">
+
+            <button
+                type="button"
+                id="minusSphKiri"
+                class="sign-button"
+                onclick="pilihSph('kiri','-')"
+            >
+                −
+            </button>
+
+            <button
+                type="button"
+                id="plusSphKiri"
+                class="sign-button"
+                onclick="pilihSph('kiri','+')"
+            >
+                +
+            </button>
+
+            <input
+                type="text"
+                id="sphKiri"
+                class="prescription-input"
+                placeholder="Masukkan SPH"
+                inputmode="decimal"
+                autocomplete="off"
+                onblur="formatResepSigned(this,'kiri','sph')"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+            CYL
+        </label>
+
+        <div class="prescription-row">
+
+            <button
+                type="button"
+                id="minusCylKiri"
+                class="sign-button"
+                onclick="pilihCyl('kiri','-')"
+            >
+                −
+            </button>
+
+            <button
+                type="button"
+                id="plusCylKiri"
+                class="sign-button"
+                onclick="pilihCyl('kiri','+')"
+            >
+                +
+            </button>
+
+            <input
+                type="text"
+                id="cylKiri"
+                class="prescription-input"
+                placeholder="Masukkan CYL"
+                inputmode="decimal"
+                autocomplete="off"
+                onblur="formatResepSigned(this,'kiri','cyl')"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="field">
+
+        <label>
+            AXIS
+        </label>
+
+        <div class="prescription-row">
+
+            <input
+                type="text"
+                id="axisKiri"
+                class="prescription-input"
+                placeholder="Contoh 90"
+                inputmode="numeric"
+                maxlength="3"
+                autocomplete="off"
+            >
+
+            <span class="degree">
+                °
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     ADD
+========================================================= -->
+
+<div class="card">
+
+    <div class="card-title">
+        ADD
+    </div>
+
+    <div class="prescription-row">
+
+        <div class="fixed-sign">
+            +
+        </div>
+
+        <input
+            type="text"
+            id="add"
+            class="prescription-input"
+            placeholder="Masukkan ADD"
+            inputmode="decimal"
+            autocomplete="off"
+            onblur="formatAdd(this)"
+        >
+
+    </div>
+
+    <div class="helper">
+        ADD otomatis menggunakan tanda plus.
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     LENSA
+========================================================= -->
+
+<div class="card">
+
+    <div class="card-title">
+        👓 LENSA
+    </div>
+
+    <div class="card-subtitle">
+        Cari lensa yang sudah tersimpan, atau ketik nama lensa baru.
+    </div>
+
+    <div class="field">
+
+        <label for="cariLensa">
+            Cari / Pilih Lensa
+        </label>
+
+        <div class="lens-search-wrap">
+
+            <input
+                type="text"
+                id="cariLensa"
+                placeholder="Contoh: Bluray"
+                autocomplete="off"
+                oninput="cariLensa()"
+                onfocus="tampilkanSemuaLensa()"
+            >
+
+            <div
+                id="lensResults"
+                class="lens-results"
+            ></div>
+
+        </div>
+
+        <div
+            id="selectedLensBox"
+            class="selected-box"
+        >
+
+            <div>
+
+                <div class="selected-label">
+                    Lensa yang dipilih
+                </div>
+
+                <div
+                    id="selectedLensName"
+                    class="selected-name"
+                >
+                </div>
+
+            </div>
+
+            <button
+                type="button"
+                class="clear-button"
+                onclick="hapusPilihanLensa()"
+            >
+                Hapus
+            </button>
+
+        </div>
+
+        <button
+            type="button"
+            id="saveNewLensButton"
+            class="save-new-button"
+            onclick="simpanLensaDariPencarian()"
+        >
+            ＋ SIMPAN NAMA INI KE DAFTAR LENSA
+        </button>
+
+        <div class="helper">
+            Kalau lensa sudah ada, cukup klik hasilnya. Kalau belum ada, ketik namanya lalu bisa langsung dipakai.
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     LAB
+========================================================= -->
+
+<div class="card">
+
+    <div class="card-title">
+        🏭 LAB YANG DITUJU
+    </div>
+
+    <div class="card-subtitle">
+        Pilih lab untuk pengiriman order melalui WhatsApp.
+    </div>
+
+    <div class="field">
+
+        <label for="pilihLab">
+            Pilih Lab
+        </label>
+
+        <select
+            id="pilihLab"
+            onchange="pilihLabBerubah()"
+        >
+
+            <option value="">
+                -- Pilih lab --
+            </option>
+
+        </select>
+
+        <div
+            id="labInfo"
+            class="lab-info"
+        ></div>
+
+    </div>
+
+    <button
+        type="button"
+        class="secondary-button"
+        style="width:100%;"
+        onclick="bukaKelolaLab()"
+    >
+        ⚙ KELOLA DATA LAB
+    </button>
+
+</div>
+
+
+<!-- =========================================================
+     KETERANGAN
+========================================================= -->
+
+<div class="card">
+
+    <div class="card-title">
+        📝 KETERANGAN / CATATAN
+    </div>
+
+    <textarea
+        id="keterangan"
+        placeholder="Contoh: frame pasien sendiri, PD 62, coating khusus..."
+    ></textarea>
+
+</div>
+
+
+<!-- =========================================================
+     BUAT ORDER
+========================================================= -->
+
+<button
+    type="button"
+    id="buatOrderButton"
+    class="main-button"
+    onclick="buatOrder()"
+>
+    BUAT ORDER
+</button>
+
+
+<!-- =========================================================
+     HASIL
+========================================================= -->
+
+<div
+    id="hasilOrder"
+></div>
+
+
+<div
+    id="orderActions"
+    class="order-actions"
+>
+
+    <button
+        type="button"
+        class="action-button copy-button"
+        onclick="salinDanKirimManual()"
+    >
+        📋 SALIN & KIRIM WA MANUAL
+    </button>
+
+    <button
+        type="button"
+        class="action-button wa-button"
+        onclick="kirimLangsungKeWA()"
+    >
+        💬 KIRIM LANGSUNG KE WA LAB
+    </button>
+
+</div>
+
+
+<!-- =========================================================
+     DATA LENSA
+========================================================= -->
+
+<div class="card">
+
+    <div class="management-header">
+
+        <div class="card-title">
+            👓 DATA LENSA
+        </div>
+
+        <button
+            type="button"
+            id="toggleLensaButton"
+            class="management-toggle"
+            onclick="toggleManagement('lensaManagement','toggleLensaButton')"
+        >
+            Buka
+        </button>
+
+    </div>
+
+    <div
+        id="lensaManagement"
+        class="management-body"
+    >
+
+        <div class="manage-add-row">
+
+            <input
+                type="text"
+                id="namaLensaBaru"
+                placeholder="Nama lensa baru"
+            >
+
+            <button
+                type="button"
+                class="secondary-button"
+                onclick="tambahLensa()"
+            >
+                ＋ TAMBAH
+            </button>
+
+        </div>
+
+        <div
+            id="daftarLensaManagement"
+            class="manage-list"
+        >
+            <div class="empty-message">
+                Memuat data lensa...
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     DATA LAB
+========================================================= -->
+
+<div class="card">
+
+    <div class="management-header">
+
+        <div class="card-title">
+            🏭 DATA LAB
+        </div>
+
+        <button
+            type="button"
+            id="toggleLabButton"
+            class="management-toggle"
+            onclick="toggleManagement('labManagement','toggleLabButton')"
+        >
+            Buka
+        </button>
+
+    </div>
+
+    <div
+        id="labManagement"
+        class="management-body"
+    >
+
+        <div class="field">
+
+            <label>
+                Nama Lab
+            </label>
+
+            <input
+                type="text"
+                id="namaLabBaru"
+                placeholder="Contoh: Martha"
+            >
+
+        </div>
+
+        <div class="manage-add-row">
+
+            <input
+                type="text"
+                id="nomorLabBaru"
+                placeholder="Nomor WhatsApp"
+                inputmode="numeric"
+            >
+
+            <button
+                type="button"
+                class="secondary-button"
+                onclick="tambahLab()"
+            >
+                ＋ TAMBAH LAB
+            </button>
+
+        </div>
+
+        <div class="helper" style="margin-bottom:14px;">
+            Bisa isi 08xxxxxxxxxx atau 628xxxxxxxxxx.
+        </div>
+
+        <div
+            id="daftarLabManagement"
+            class="manage-list"
+        >
+            <div class="empty-message">
+                Memuat data lab...
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     MODAL EDIT LENSA
+========================================================= -->
+
+<div
+    id="modalEditLensa"
+    class="modal-overlay"
+>
+
+    <div class="modal">
+
+        <div class="modal-title">
+            Edit Nama Lensa
+        </div>
+
+        <input
+            type="hidden"
+            id="editLensaId"
+        >
+
+        <div class="field">
+
+            <label>
+                Nama Lensa
+            </label>
+
+            <input
+                type="text"
+                id="editLensaNama"
+                placeholder="Nama lensa"
+            >
+
+        </div>
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                class="cancel-button"
+                onclick="tutupModal('modalEditLensa')"
+            >
+                BATAL
+            </button>
+
+            <button
+                type="button"
+                class="save-button"
+                onclick="simpanEditLensa()"
+            >
+                SIMPAN
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     MODAL EDIT LAB
+========================================================= -->
+
+<div
+    id="modalEditLab"
+    class="modal-overlay"
+>
+
+    <div class="modal">
+
+        <div class="modal-title">
+            Edit Data Lab
+        </div>
+
+        <input
+            type="hidden"
+            id="editLabId"
+        >
+
+        <div class="field">
+
+            <label>
+                Nama Lab
+            </label>
+
+            <input
+                type="text"
+                id="editLabNama"
+            >
+
+        </div>
+
+        <div class="field">
+
+            <label>
+                Nomor WhatsApp
+            </label>
+
+            <input
+                type="text"
+                id="editLabWhatsapp"
+                inputmode="numeric"
+            >
+
+        </div>
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                class="cancel-button"
+                onclick="tutupModal('modalEditLab')"
+            >
+                BATAL
+            </button>
+
+            <button
+                type="button"
+                class="save-button"
+                onclick="simpanEditLab()"
+            >
+                SIMPAN
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div
+    id="toast"
+    class="toast"
+></div>
+
 
 <script>
 
+/* =========================================================
+   API
+========================================================= */
 
-    /* =========================
-       TANDA SPH
-    ========================= */
-
-    let tandaSphKanan = "−";
-
-    let tandaSphKiri = "−";
+const API_URL =
+    "https://order-lensa-api.social-vanitas.workers.dev";
 
 
+/* =========================================================
+   DATA
+========================================================= */
 
-    /* =========================
-       PILIH MINUS
-    ========================= */
+let daftarLensa = [];
+let daftarLab = [];
 
-    function pilihMinus(mata) {
+let lensaTerpilih = "";
 
+let tandaSphKanan = "";
+let tandaSphKiri = "";
 
-        if (mata === "kanan") {
+let tandaCylKanan = "";
+let tandaCylKiri = "";
 
-            tandaSphKanan = "−";
-
-
-            document
-                .getElementById("minusKanan")
-                .classList.add("active");
-
-
-            document
-                .getElementById("plusKanan")
-                .classList.remove("active");
-
-        }
+let toastTimer = null;
 
 
-        if (mata === "kiri") {
+/* =========================================================
+   TOAST
+========================================================= */
 
-            tandaSphKiri = "−";
+function tampilToast(pesan) {
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.textContent = pesan;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer =
+        setTimeout(function() {
+
+            toast.classList.remove("show");
+
+        }, 2800);
+}
 
 
-            document
-                .getElementById("minusKiri")
-                .classList.add("active");
+/* =========================================================
+   WHATSAPP
+========================================================= */
 
+function normalisasiWhatsApp(nomor) {
 
-            document
-                .getElementById("plusKiri")
-                .classList.remove("active");
+    let angka =
+        String(nomor || "")
+            .replace(/\D/g,"");
 
-        }
-
+    if (angka.startsWith("0")) {
+        angka =
+            "62" + angka.substring(1);
     }
 
-
-
-    /* =========================
-       PILIH PLUS
-    ========================= */
-
-    function pilihPlus(mata) {
-
-
-        if (mata === "kanan") {
-
-            tandaSphKanan = "+";
-
-
-            document
-                .getElementById("plusKanan")
-                .classList.add("active");
-
-
-            document
-                .getElementById("minusKanan")
-                .classList.remove("active");
-
-        }
-
-
-        if (mata === "kiri") {
-
-            tandaSphKiri = "+";
-
-
-            document
-                .getElementById("plusKiri")
-                .classList.add("active");
-
-
-            document
-                .getElementById("minusKiri")
-                .classList.remove("active");
-
-        }
-
+    if (angka.startsWith("8")) {
+        angka =
+            "62" + angka;
     }
 
+    return angka;
+}
 
 
-    /* =========================
-       FORMAT RESEP
-       
-       75   → 0.75
-       125  → 1.25
-       200  → 2.00
-       500  → 5.00
-       1000 → 10.00
-       1025 → 10.25
-    ========================= */
+/* =========================================================
+   FORMAT ANGKA
+========================================================= */
 
-    function formatResep(input) {
+function formatAngkaDasar(nilai) {
 
+    nilai =
+        String(nilai || "")
+            .trim();
 
-        let nilai =
-            input.value.trim();
+    if (!nilai) {
+        return "";
+    }
 
+    nilai =
+        nilai.replace(/[+\-−]/g,"");
 
-        if (nilai === "") {
-            return;
+    if (!nilai) {
+        return "";
+    }
+
+    if (nilai.includes(".")) {
+
+        const angka =
+            parseFloat(nilai);
+
+        if (isNaN(angka)) {
+            return "";
         }
 
+        return Math.abs(angka).toFixed(2);
+    }
 
-        /* Input dengan titik */
+    const angka =
+        parseInt(nilai,10);
 
-        if (nilai.includes(".")) {
+    if (isNaN(angka)) {
+        return "";
+    }
 
-            let angka =
-                parseFloat(nilai);
+    return (
+        Math.abs(angka) / 100
+    ).toFixed(2);
+}
 
 
-            if (!isNaN(angka)) {
+/* =========================================================
+   TOMBOL TANDA
+========================================================= */
 
-                input.value =
-                    angka.toFixed(2);
+function updateTombolTanda(
+    idMinus,
+    idPlus,
+    tanda
+) {
 
+    const minus =
+        document.getElementById(idMinus);
+
+    const plus =
+        document.getElementById(idPlus);
+
+    if (tanda === "-") {
+
+        minus.classList.add("active");
+        plus.classList.remove("active");
+
+    } else if (tanda === "+") {
+
+        plus.classList.add("active");
+        minus.classList.remove("active");
+
+    } else {
+
+        minus.classList.remove("active");
+        plus.classList.remove("active");
+    }
+}
+
+
+/* =========================================================
+   SPH
+========================================================= */
+
+function pilihSph(mata,tanda) {
+
+    if (mata === "kanan") {
+
+        tandaSphKanan = tanda;
+
+        updateTombolTanda(
+            "minusSphKanan",
+            "plusSphKanan",
+            tanda
+        );
+
+        updateInputTanda(
+            "sphKanan",
+            tanda
+        );
+
+    } else {
+
+        tandaSphKiri = tanda;
+
+        updateTombolTanda(
+            "minusSphKiri",
+            "plusSphKiri",
+            tanda
+        );
+
+        updateInputTanda(
+            "sphKiri",
+            tanda
+        );
+    }
+}
+
+
+/* =========================================================
+   CYL
+========================================================= */
+
+function pilihCyl(mata,tanda) {
+
+    if (mata === "kanan") {
+
+        tandaCylKanan = tanda;
+
+        updateTombolTanda(
+            "minusCylKanan",
+            "plusCylKanan",
+            tanda
+        );
+
+        updateInputTanda(
+            "cylKanan",
+            tanda
+        );
+
+    } else {
+
+        tandaCylKiri = tanda;
+
+        updateTombolTanda(
+            "minusCylKiri",
+            "plusCylKiri",
+            tanda
+        );
+
+        updateInputTanda(
+            "cylKiri",
+            tanda
+        );
+    }
+}
+
+
+/* =========================================================
+   UPDATE TANDA DI INPUT
+========================================================= */
+
+function updateInputTanda(
+    idInput,
+    tanda
+) {
+
+    const input =
+        document.getElementById(idInput);
+
+    let nilai =
+        input.value
+            .replace(/[+\-−]/g,"")
+            .trim();
+
+    /*
+       PENTING:
+       Kalau belum ada angka,
+       jangan tampilkan tanda.
+    */
+
+    if (!nilai) {
+
+        input.value = "";
+
+        return;
+    }
+
+    input.value =
+        tanda + nilai;
+}
+
+
+/* =========================================================
+   FORMAT SPH / CYL
+========================================================= */
+
+function formatResepSigned(
+    input,
+    mata,
+    jenis
+) {
+
+    let nilai =
+        input.value.trim();
+
+    if (!nilai) {
+
+        input.value = "";
+
+        return;
+    }
+
+    let tanda;
+
+    if (mata === "kanan") {
+
+        tanda =
+            jenis === "sph"
+                ? tandaSphKanan
+                : tandaCylKanan;
+
+    } else {
+
+        tanda =
+            jenis === "sph"
+                ? tandaSphKiri
+                : tandaCylKiri;
+    }
+
+    /*
+       Kalau user mengetik tanda sendiri.
+    */
+
+    if (nilai.startsWith("+")) {
+
+        tanda = "+";
+
+    } else if (
+        nilai.startsWith("-") ||
+        nilai.startsWith("−")
+    ) {
+
+        tanda = "-";
+    }
+
+    /*
+       Kalau belum memilih tanda,
+       default mengikuti tanda yang diketik.
+    */
+
+    if (!tanda) {
+
+        tampilToast(
+            "Pilih tanda − atau + terlebih dahulu."
+        );
+
+        input.value = "";
+
+        return;
+    }
+
+    const angka =
+        formatAngkaDasar(nilai);
+
+    if (!angka) {
+
+        input.value = "";
+
+        tampilToast(
+            "Angka resep tidak valid."
+        );
+
+        return;
+    }
+
+    input.value =
+        tanda === "-"
+            ? "-" + angka
+            : "+" + angka;
+
+    /*
+       Simpan tanda.
+    */
+
+    if (mata === "kanan") {
+
+        if (jenis === "sph") {
+            tandaSphKanan = tanda;
+        } else {
+            tandaCylKanan = tanda;
+        }
+
+    } else {
+
+        if (jenis === "sph") {
+            tandaSphKiri = tanda;
+        } else {
+            tandaCylKiri = tanda;
+        }
+    }
+
+    updateTombolTanda(
+        jenis === "sph"
+            ? (
+                mata === "kanan"
+                    ? "minusSphKanan"
+                    : "minusSphKiri"
+            )
+            : (
+                mata === "kanan"
+                    ? "minusCylKanan"
+                    : "minusCylKiri"
+            ),
+
+        jenis === "sph"
+            ? (
+                mata === "kanan"
+                    ? "plusSphKanan"
+                    : "plusSphKiri"
+            )
+            : (
+                mata === "kanan"
+                    ? "plusCylKanan"
+                    : "plusCylKiri"
+            ),
+
+        tanda
+    );
+}
+
+
+/* =========================================================
+   ADD
+========================================================= */
+
+function formatAdd(input) {
+
+    const nilai =
+        input.value.trim();
+
+    if (!nilai) {
+
+        input.value = "";
+
+        return;
+    }
+
+    const angka =
+        formatAngkaDasar(nilai);
+
+    if (!angka) {
+
+        input.value = "";
+
+        tampilToast(
+            "Angka ADD tidak valid."
+        );
+
+        return;
+    }
+
+    input.value =
+        "+" + angka;
+}
+
+
+/* =========================================================
+   AXIS
+========================================================= */
+
+function ambilAxis(id) {
+
+    const input =
+        document.getElementById(id);
+
+    let nilai =
+        input.value.trim();
+
+    if (!nilai) {
+        return "";
+    }
+
+    nilai =
+        nilai.replace(/\D/g,"");
+
+    if (!nilai) {
+        return "";
+    }
+
+    const axis =
+        parseInt(nilai,10);
+
+    if (
+        isNaN(axis) ||
+        axis < 0 ||
+        axis > 180
+    ) {
+
+        return null;
+    }
+
+    return String(axis);
+}
+
+
+/* =========================================================
+   LENSA - LOAD
+========================================================= */
+
+async function loadLensa() {
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL + "/lenses"
+            );
+
+        if (!response.ok) {
+            throw new Error(
+                "Gagal mengambil lensa"
+            );
+        }
+
+        const data =
+            await response.json();
+
+        daftarLensa =
+            Array.isArray(data.lenses)
+                ? data.lenses
+                : [];
+
+        renderLensaManagement();
+
+    } catch(error) {
+
+        console.error(error);
+
+        tampilToast(
+            "Gagal mengambil data lensa."
+        );
+
+        renderLensaManagement();
+    }
+}
+
+
+/* =========================================================
+   LENSA - CARI
+========================================================= */
+
+function cariLensa() {
+
+    const input =
+        document.getElementById(
+            "cariLensa"
+        );
+
+    const kata =
+        input.value
+            .trim()
+            .toLowerCase();
+
+    const hasil =
+        kata
+            ? daftarLensa.filter(
+                function(item) {
+
+                    return item.name
+                        .toLowerCase()
+                        .includes(kata);
+                }
+            )
+            : daftarLensa;
+
+    renderHasilLensa(hasil);
+}
+
+
+/* =========================================================
+   LENSA - TAMPIL SEMUA
+========================================================= */
+
+function tampilkanSemuaLensa() {
+
+    renderHasilLensa(
+        daftarLensa
+    );
+}
+
+
+/* =========================================================
+   LENSA - RENDER HASIL
+========================================================= */
+
+function renderHasilLensa(daftar) {
+
+    const box =
+        document.getElementById(
+            "lensResults"
+        );
+
+    box.innerHTML = "";
+
+    if (!daftar.length) {
+
+        box.innerHTML =
+            '<div class="lens-result-empty">' +
+            'Lensa tidak ditemukan. ' +
+            'Kamu tetap bisa memakai nama yang diketik.' +
+            '</div>';
+
+        box.classList.add("show");
+
+        return;
+    }
+
+    daftar.forEach(
+        function(lensa) {
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+            item.className =
+                "lens-result-item";
+
+            item.textContent =
+                lensa.name;
+
+            item.onclick =
+                function() {
+
+                    pilihLensa(
+                        lensa.name
+                    );
+                };
+
+            box.appendChild(item);
+        }
+    );
+
+    box.classList.add("show");
+}
+
+
+/* =========================================================
+   LENSA - PILIH
+========================================================= */
+
+function pilihLensa(nama) {
+
+    lensaTerpilih =
+        nama;
+
+    document
+        .getElementById("cariLensa")
+        .value =
+        nama;
+
+    document
+        .getElementById("selectedLensName")
+        .textContent =
+        nama;
+
+    document
+        .getElementById("selectedLensBox")
+        .classList
+        .add("show");
+
+    document
+        .getElementById("lensResults")
+        .classList
+        .remove("show");
+}
+
+
+/* =========================================================
+   LENSA - HAPUS PILIHAN
+========================================================= */
+
+function hapusPilihanLensa() {
+
+    lensaTerpilih = "";
+
+    document
+        .getElementById("cariLensa")
+        .value = "";
+
+    document
+        .getElementById("selectedLensBox")
+        .classList
+        .remove("show");
+}
+
+
+/* =========================================================
+   LENSA - NAMA YANG DIPAKAI
+========================================================= */
+
+function ambilNamaLensa() {
+
+    /*
+       Kalau pilih dari daftar,
+       pakai pilihan.
+
+       Kalau ketik manual,
+       pakai teks pencarian.
+    */
+
+    if (lensaTerpilih) {
+        return lensaTerpilih.trim();
+    }
+
+    return document
+        .getElementById("cariLensa")
+        .value
+        .trim();
+}
+
+
+/* =========================================================
+   LENSA - SIMPAN DARI PENCARIAN
+========================================================= */
+
+async function simpanLensaDariPencarian() {
+
+    const nama =
+        document
+            .getElementById("cariLensa")
+            .value
+            .trim();
+
+    if (!nama) {
+
+        tampilToast(
+            "Ketik nama lensa terlebih dahulu."
+        );
+
+        return;
+    }
+
+    const sudahAda =
+        daftarLensa.some(
+            function(item) {
+
+                return item.name
+                    .toLowerCase() ===
+                    nama.toLowerCase();
             }
+        );
+
+    if (sudahAda) {
+
+        pilihLensa(nama);
+
+        tampilToast(
+            "Lensa sudah ada di daftar."
+        );
+
+        return;
+    }
+
+    await simpanLensaKeDatabase(
+        nama
+    );
+}
+
+
+/* =========================================================
+   LENSA - TAMBAH DARI MANAGEMENT
+========================================================= */
+
+async function tambahLensa() {
+
+    const input =
+        document.getElementById(
+            "namaLensaBaru"
+        );
+
+    const nama =
+        input.value.trim();
+
+    if (!nama) {
+
+        tampilToast(
+            "Nama lensa wajib diisi."
+        );
+
+        input.focus();
+
+        return;
+    }
+
+    await simpanLensaKeDatabase(
+        nama,
+        input
+    );
+}
+
+
+/* =========================================================
+   LENSA - SIMPAN DATABASE
+========================================================= */
+
+async function simpanLensaKeDatabase(
+    nama,
+    inputYangDikosongkan = null
+) {
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL + "/lenses",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify({
+                            name: nama
+                        })
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if (!response.ok) {
+
+            tampilToast(
+                data.message ||
+                "Gagal menyimpan lensa."
+            );
 
             return;
         }
 
-
-        /* Input angka biasa */
-
-        let angka =
-            parseInt(nilai, 10);
-
-
-        if (!isNaN(angka)) {
-
-            input.value =
-                (angka / 100).toFixed(2);
-
+        if (inputYangDikosongkan) {
+            inputYangDikosongkan.value = "";
         }
 
+        await loadLensa();
+
+        pilihLensa(nama);
+
+        tampilToast(
+            "Lensa berhasil disimpan."
+        );
+
+    } catch(error) {
+
+        console.error(error);
+
+        tampilToast(
+            "Tidak bisa terhubung ke server."
+        );
+    }
+}
+
+
+/* =========================================================
+   LENSA - MANAGEMENT
+========================================================= */
+
+function renderLensaManagement() {
+
+    const container =
+        document.getElementById(
+            "daftarLensaManagement"
+        );
+
+    container.innerHTML = "";
+
+    if (!daftarLensa.length) {
+
+        container.innerHTML =
+            '<div class="empty-message">' +
+            'Belum ada lensa tersimpan.' +
+            '</div>';
+
+        return;
     }
 
+    daftarLensa.forEach(
+        function(lensa) {
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "manage-item";
+
+            const main =
+                document.createElement("div");
+
+            const name =
+                document.createElement("div");
+
+            name.className =
+                "manage-item-name";
+
+            name.textContent =
+                lensa.name;
+
+            main.appendChild(name);
 
 
-    /* =========================
-       FORMAT TANGGAL
-    ========================= */
+            const actions =
+                document.createElement("div");
 
-    function formatTanggalIndonesia(tanggal) {
-
-
-        let bagian =
-            tanggal.split("-");
+            actions.className =
+                "manage-actions";
 
 
-        if (bagian.length !== 3) {
+            const edit =
+                document.createElement("button");
 
-            return tanggal;
+            edit.type = "button";
 
+            edit.className =
+                "small-button";
+
+            edit.textContent = "✏";
+
+            edit.onclick =
+                function() {
+
+                    bukaEditLensa(
+                        lensa.id
+                    );
+                };
+
+
+            const del =
+                document.createElement("button");
+
+            del.type = "button";
+
+            del.className =
+                "small-button";
+
+            del.textContent = "🗑";
+
+            del.onclick =
+                function() {
+
+                    hapusLensa(
+                        lensa.id
+                    );
+                };
+
+
+            actions.appendChild(edit);
+            actions.appendChild(del);
+
+            item.appendChild(main);
+            item.appendChild(actions);
+
+            container.appendChild(item);
+        }
+    );
+}
+
+
+/* =========================================================
+   EDIT LENSA
+========================================================= */
+
+function bukaEditLensa(id) {
+
+    const lensa =
+        daftarLensa.find(
+            function(item) {
+
+                return String(item.id) ===
+                    String(id);
+            }
+        );
+
+    if (!lensa) return;
+
+    document
+        .getElementById("editLensaId")
+        .value =
+        lensa.id;
+
+    document
+        .getElementById("editLensaNama")
+        .value =
+        lensa.name;
+
+    bukaModal(
+        "modalEditLensa"
+    );
+}
+
+
+async function simpanEditLensa() {
+
+    const id =
+        document
+            .getElementById("editLensaId")
+            .value;
+
+    const nama =
+        document
+            .getElementById("editLensaNama")
+            .value
+            .trim();
+
+    if (!nama) {
+
+        tampilToast(
+            "Nama lensa wajib diisi."
+        );
+
+        return;
+    }
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL +
+                "/lenses/" +
+                id,
+                {
+                    method: "PUT",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify({
+                            name: nama
+                        })
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if (!response.ok) {
+
+            tampilToast(
+                data.message ||
+                "Gagal mengubah lensa."
+            );
+
+            return;
         }
 
-
-        let tahun =
-            bagian[0];
-
-        let bulan =
-            bagian[1];
-
-        let hari =
-            bagian[2];
-
-
-        return (
-            hari +
-            "-" +
-            bulan +
-            "-" +
-            tahun
+        tutupModal(
+            "modalEditLensa"
         );
 
+        await loadLensa();
+
+        tampilToast(
+            "Lensa berhasil diubah."
+        );
+
+    } catch(error) {
+
+        console.error(error);
+
+        tampilToast(
+            "Tidak bisa terhubung ke server."
+        );
+    }
+}
+
+
+async function hapusLensa(id) {
+
+    const lensa =
+        daftarLensa.find(
+            function(item) {
+
+                return String(item.id) ===
+                    String(id);
+            }
+        );
+
+    if (!lensa) return;
+
+    if (
+        !confirm(
+            'Hapus lensa "' +
+            lensa.name +
+            '"?'
+        )
+    ) {
+        return;
     }
 
+    try {
 
+        const response =
+            await fetch(
+                API_URL +
+                "/lenses/" +
+                id,
+                {
+                    method: "DELETE"
+                }
+            );
 
-    /* =========================
-       BUAT ORDER
-    ========================= */
+        const data =
+            await response.json();
 
-    function buatOrder() {
+        if (!response.ok) {
 
+            tampilToast(
+                data.message ||
+                "Gagal menghapus lensa."
+            );
 
-        /* Format resep */
+            return;
+        }
 
-        formatResep(
-            document.getElementById("sphKanan")
+        if (
+            lensaTerpilih ===
+            lensa.name
+        ) {
+            hapusPilihanLensa();
+        }
+
+        await loadLensa();
+
+        tampilToast(
+            "Lensa berhasil dihapus."
         );
 
+    } catch(error) {
 
-        formatResep(
-            document.getElementById("cylKanan")
+        console.error(error);
+
+        tampilToast(
+            "Tidak bisa terhubung ke server."
         );
-
-
-        formatResep(
-            document.getElementById("sphKiri")
-        );
-
-
-        formatResep(
-            document.getElementById("cylKiri")
-        );
-
-
-        formatResep(
-            document.getElementById("add")
-        );
-
-
-
-        /* =========================
-           AMBIL DATA
-        ========================= */
-
-        let tanggal =
-            document.getElementById("tanggal").value;
-
-
-        let nama =
-            document.getElementById("nama").value.trim();
-
-
-        let umur =
-            document.getElementById("umur").value.trim();
-
-
-
-        let sphKanan =
-            document.getElementById("sphKanan").value.trim();
-
-
-        let cylKanan =
-            document.getElementById("cylKanan").value.trim();
-
-
-        let axisKanan =
-            document.getElementById("axisKanan").value.trim();
-
-
-
-        let sphKiri =
-            document.getElementById("sphKiri").value.trim();
-
-
-        let cylKiri =
-            document.getElementById("cylKiri").value.trim();
-
-
-        let axisKiri =
-            document.getElementById("axisKiri").value.trim();
-
-
-
-        let add =
-            document.getElementById("add").value.trim();
-
-
-        let lensa =
-            document.getElementById("lensa").value.trim();
-
-
-        let keterangan =
-            document.getElementById("keterangan").value.trim();
-
-
-
-        /* =========================
-           FORMAT DATA
-        ========================= */
-
-        let tanggalTampil =
-            tanggal
-                ? formatTanggalIndonesia(tanggal)
-                : "-";
-
-
-        let namaTampil =
-            nama || "-";
-
-
-        let umurTampil =
-            umur
-                ? umur + " tahun"
-                : "-";
-
-
-
-        let sphKananTampil =
-            sphKanan
-                ? tandaSphKanan + sphKanan
-                : "-";
-
-
-        let cylKananTampil =
-            cylKanan
-                ? "−" + cylKanan
-                : "-";
-
-
-        let axisKananTampil =
-            axisKanan
-                ? axisKanan + "°"
-                : "-";
-
-
-
-        let sphKiriTampil =
-            sphKiri
-                ? tandaSphKiri + sphKiri
-                : "-";
-
-
-        let cylKiriTampil =
-            cylKiri
-                ? "−" + cylKiri
-                : "-";
-
-
-        let axisKiriTampil =
-            axisKiri
-                ? axisKiri + "°"
-                : "-";
-
-
-
-        let addTampil =
-            add
-                ? "+" + add
-                : "-";
-
-
-        let lensaTampil =
-            lensa || "-";
-
-
-        let keteranganTampil =
-            keterangan || "-";
-
-
-
-        /* =========================
-           TEKS ORDER
-           KHUSUS COPY WHATSAPP
-        ========================= */
-
-        let orderText =
-`ORDER LENSA
-────────────────
-Tanggal : ${tanggalTampil}
-Nama    : ${namaTampil}
-Umur    : ${umurTampil}
-
-MATA KANAN (OD)
-SPH  : ${sphKananTampil}
-CYL  : ${cylKananTampil}
-AXIS : ${axisKananTampil}
-
-MATA KIRI (OS)
-SPH  : ${sphKiriTampil}
-CYL  : ${cylKiriTampil}
-AXIS : ${axisKiriTampil}
-
-ADD : ${addTampil}
-
-Lensa :
-${lensaTampil}
-
-Keterangan :
-${keteranganTampil}
-────────────────`;
-
-
-
-        /* =========================
-           TAMPILKAN HASIL
-        ========================= */
-
-        let hasilOrder =
-            document.getElementById("hasilOrder");
-
-
-        hasilOrder.innerText =
-            orderText;
-
-
-        hasilOrder.style.display =
-            "block";
-
-
-        document.getElementById("copyButton")
-            .style.display =
-            "block";
-
-
-
-        /* Simpan teks asli */
-
-        hasilOrder.dataset.orderText =
-            orderText;
-
     }
+}
 
 
+/* =========================================================
+   LAB - LOAD
+========================================================= */
 
-    /* =========================
-       COPY ORDER
-    ========================= */
+async function loadLab() {
 
-    function copyOrder() {
+    try {
+
+        const response =
+            await fetch(
+                API_URL + "/labs"
+            );
+
+        if (!response.ok) {
+            throw new Error(
+                "Gagal mengambil lab"
+            );
+        }
+
+        const data =
+            await response.json();
+
+        daftarLab =
+            Array.isArray(data.labs)
+                ? data.labs
+                : [];
+
+        renderLabSelect();
+        renderLabManagement();
+
+    } catch(error) {
+
+        console.error(error);
+
+        tampilToast(
+            "Gagal mengambil data lab."
+        );
+
+        renderLabSelect();
+        renderLabManagement();
+    }
+}
 
 
-        let hasilOrder =
-            document.getElementById("hasilOrder");
+/* =========================================================
+   LAB - RENDER
+========================================================= */
 
+function renderLabSelect() {
 
-        let orderText =
-            hasilOrder.dataset.orderText ||
-            hasilOrder.innerText;
+    const select =
+        document.getElementById(
+            "pilihLab"
+        );
 
+    const nilaiSebelumnya =
+        select.value;
 
+    select.innerHTML = "";
 
-        navigator.clipboard
-            .writeText(orderText)
+    const kosong =
+        document.createElement(
+            "option"
+        );
 
-            .then(function() {
+    kosong.value = "";
 
-                alert(
-                    "Order berhasil dicopy."
+    kosong.textContent =
+        "-- Pilih lab --";
+
+    select.appendChild(kosong);
+
+    daftarLab.forEach(
+        function(lab) {
+
+            const option =
+                document.createElement(
+                    "option"
                 );
 
-            })
+            option.value =
+                lab.id;
 
-            .catch(function() {
+            option.textContent =
+                lab.name;
 
-                alert(
-                    "Gagal copy order."
+            select.appendChild(option);
+        }
+    );
+
+    if (
+        daftarLab.some(
+            function(lab) {
+
+                return String(lab.id) ===
+                    String(nilaiSebelumnya);
+            }
+        )
+    ) {
+
+        select.value =
+            nilaiSebelumnya;
+
+        pilihLabBerubah();
+    }
+}
+
+
+/* =========================================================
+   LAB - PILIH
+========================================================= */
+
+function pilihLabBerubah() {
+
+    const id =
+        document
+            .getElementById("pilihLab")
+            .value;
+
+    const info =
+        document.getElementById(
+            "labInfo"
+        );
+
+    if (!id) {
+
+        info.classList.remove("show");
+
+        info.textContent = "";
+
+        return;
+    }
+
+    const lab =
+        daftarLab.find(
+            function(item) {
+
+                return String(item.id) ===
+                    String(id);
+            }
+        );
+
+    if (!lab) return;
+
+    info.textContent =
+        "WhatsApp: " +
+        normalisasiWhatsApp(
+            lab.whatsapp
+        );
+
+    info.classList.add("show");
+}
+
+
+/* =========================================================
+   LAB - TAMBAH
+========================================================= */
+
+async function tambahLab() {
+
+    const namaInput =
+        document.getElementById(
+            "namaLabBaru"
+        );
+
+    const nomorInput =
+        document.getElementById(
+            "nomorLabBaru"
+        );
+
+    const nama =
+        namaInput.value.trim();
+
+    const whatsapp =
+        normalisasiWhatsApp(
+            nomorInput.value
+        );
+
+    if (!nama) {
+
+        tampilToast(
+            "Nama lab wajib diisi."
+        );
+
+        namaInput.focus();
+
+        return;
+    }
+
+    if (
+        !whatsapp ||
+        whatsapp.length < 10
+    ) {
+
+        tampilToast(
+            "Nomor WhatsApp tidak valid."
+        );
+
+        nomorInput.focus();
+
+        return;
+    }
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL + "/labs",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify({
+                            name: nama,
+                            whatsapp: whatsapp
+                        })
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if (!response.ok) {
+
+            tampilToast(
+                data.message ||
+                "Gagal menyimpan lab."
+            );
+
+            return;
+        }
+
+        namaInput.value = "";
+        nomorInput.value = "";
+
+        await loadLab();
+
+        tampilToast(
+            "Lab berhasil ditambahkan."
+        );
+
+    } catch(error) {
+
+        console.error(error);
+
+        tampilToast(
+            "Tidak bisa terhubung ke server."
+        );
+    }
+}
+
+
+/* =========================================================
+   LAB - MANAGEMENT
+========================================================= */
+
+function renderLabManagement() {
+
+    const container =
+        document.getElementById(
+            "daftarLabManagement"
+        );
+
+    container.innerHTML = "";
+
+    if (!daftarLab.length) {
+
+        container.innerHTML =
+            '<div class="empty-message">' +
+            'Belum ada lab tersimpan.' +
+            '</div>';
+
+        return;
+    }
+
+    daftarLab.forEach(
+        function(lab) {
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "manage-item";
+
+
+            const main =
+                document.createElement("div");
+
+
+            const name =
+                document.createElement("div");
+
+            name.className =
+                "manage-item-name";
+
+            name.textContent =
+                lab.name;
+
+
+            const info =
+                document.createElement("div");
+
+            info.className =
+                "manage-item-info";
+
+            info.textContent =
+                "WA: " +
+                normalisasiWhatsApp(
+                    lab.whatsapp
                 );
 
-            });
 
+            main.appendChild(name);
+            main.appendChild(info);
+
+
+            const actions =
+                document.createElement("div");
+
+            actions.className =
+                "manage-actions";
+
+
+            const edit =
+                document.createElement("button");
+
+            edit.type = "button";
+
+            edit.className =
+                "small-button";
+
+            edit.textContent = "✏";
+
+            edit.onclick =
+                function() {
+
+                    bukaEditLab(
+                        lab.id
+                    );
+                };
+
+
+            const del =
+                document.createElement("button");
+
+            del.type = "button";
+
+            del.className =
+                "small-button";
+
+            del.textContent = "🗑";
+
+            del.onclick =
+                function() {
+
+                    hapusLab(
+                        lab.id
+                    );
+                };
+
+
+            actions.appendChild(edit);
+            actions.appendChild(del);
+
+            item.appendChild(main);
+            item.appendChild(actions);
+
+            container.appendChild(item);
+        }
+    );
+}
+
+
+/* =========================================================
+   EDIT LAB
+========================================================= */
+
+function bukaEditLab(id) {
+
+    const lab =
+        daftarLab.find(
+            function(item) {
+
+                return String(item.id) ===
+                    String(id);
+            }
+        );
+
+    if (!lab) return;
+
+    document
+        .getElementById("editLabId")
+        .value =
+        lab.id;
+
+    document
+        .getElementById("editLabNama")
+        .value =
+        lab.name;
+
+    document
+        .getElementById("editLabWhatsapp")
+        .value =
+        lab.whatsapp;
+
+    bukaModal(
+        "modalEditLab"
+    );
+}
+
+
+async function simpanEditLab() {
+
+    const id =
+        document
+            .getElementById("editLabId")
+            .value;
+
+    const nama =
+        document
+            .getElementById("editLabNama")
+            .value
+            .trim();
+
+    const whatsapp =
+        normalisasiWhatsApp(
+            document
+                .getElementById(
+                    "editLabWhatsapp"
+                )
+                .value
+        );
+
+    if (!nama) {
+
+        tampilToast(
+            "Nama lab wajib diisi."
+        );
+
+        return;
+    }
+
+    if (
+        !whatsapp ||
+        whatsapp.length < 10
+    ) {
+
+        tampilToast(
+            "Nomor WhatsApp tidak valid."
+        );
+
+        return;
+    }
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL +
+                "/labs/" +
+                id,
+                {
+                    method: "PUT",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify({
+                            name: nama,
+                            whatsapp: whatsapp
+                        })
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if (!response.ok) {
+
+            tampilToast(
+                data.message ||
+                "Gagal mengubah lab."
+            );
+
+            return;
+        }
+
+        tutupModal(
+            "modalEditLab"
+        );
+
+        await loadLab();
+
+        tampilToast(
+            "Data lab berhasil diubah."
+        );
+
+    } catch(error) {
+
+        console.error(error);
+
+        tampilToast(
+            "Tidak bisa terhubung ke server."
+        );
+    }
+}
+
+
+async function hapusLab(id) {
+
+    const lab =
+        daftarLab.find(
+            function(item) {
+
+                return String(item.id) ===
+                    String(id);
+            }
+        );
+
+    if (!lab) return;
+
+    if (
+        !confirm(
+            'Hapus lab "' +
+            lab.name +
+            '"?'
+        )
+    ) {
+        return;
+    }
+
+    try {
+
+        const response =
+            await fetch(
+                API_URL +
+                "/labs/" +
+                id,
+                {
+                    method: "DELETE"
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if (!response.ok) {
+
+            tampilToast(
+                data.message ||
+                "Gagal menghapus lab."
+            );
+
+            return;
+        }
+
+        await loadLab();
+
+        tampilToast(
+            "Lab berhasil dihapus."
+        );
+
+    } catch(error) {
+
+        console.error(error);
+
+        tampilToast(
+            "Tidak bisa terhubung ke server."
+        );
+    }
+}
+
+
+/* =========================================================
+   VALIDASI ORDER
+========================================================= */
+
+function validasiOrder() {
+
+    const nama =
+        document
+            .getElementById("nama")
+            .value
+            .trim();
+
+    if (!nama) {
+
+        tampilToast(
+            "Nama pasien wajib diisi."
+        );
+
+        document
+            .getElementById("nama")
+            .focus();
+
+        return false;
     }
 
 
+    const axisKanan =
+        ambilAxis("axisKanan");
 
-    /* =========================
-       TANGGAL OTOMATIS
-    ========================= */
+    if (axisKanan === null) {
 
-    window.onload = function() {
+        tampilToast(
+            "AXIS mata kanan harus 0 sampai 180."
+        );
 
+        document
+            .getElementById("axisKanan")
+            .focus();
 
-        let sekarang =
-            new Date();
-
-
-        let tahun =
-            sekarang.getFullYear();
-
-
-        let bulan =
-            String(
-                sekarang.getMonth() + 1
-            ).padStart(2, "0");
+        return false;
+    }
 
 
-        let hari =
-            String(
-                sekarang.getDate()
-            ).padStart(2, "0");
+    const axisKiri =
+        ambilAxis("axisKiri");
+
+    if (axisKiri === null) {
+
+        tampilToast(
+            "AXIS mata kiri harus 0 sampai 180."
+        );
+
+        document
+            .getElementById("axisKiri")
+            .focus();
+
+        return false;
+    }
 
 
+    const resepList = [
 
+        document
+            .getElementById("sphKanan")
+            .value
+            .trim(),
+
+        document
+            .getElementById("cylKanan")
+            .value
+            .trim(),
+
+        document
+            .getElementById("sphKiri")
+            .value
+            .trim(),
+
+        document
+            .getElementById("cylKiri")
+            .value
+            .trim()
+    ];
+
+
+    for (
+        let i = 0;
+        i < resepList.length;
+        i++
+    ) {
+
+        const nilai =
+            resepList[i];
+
+        if (!nilai) {
+            continue;
+        }
+
+        if (
+            !/^[+\-]\d+(\.\d{2})?$/.test(
+                nilai
+            )
+        ) {
+
+            tampilToast(
+                "Format angka resep belum benar."
+            );
+
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
+/* =========================================================
+   BUAT ORDER
+========================================================= */
+
+function buatOrder() {
+
+    formatResepSigned(
+        document.getElementById("sphKanan"),
+        "kanan",
+        "sph"
+    );
+
+    formatResepSigned(
+        document.getElementById("cylKanan"),
+        "kanan",
+        "cyl"
+    );
+
+    formatResepSigned(
+        document.getElementById("sphKiri"),
+        "kiri",
+        "sph"
+    );
+
+    formatResepSigned(
+        document.getElementById("cylKiri"),
+        "kiri",
+        "cyl"
+    );
+
+    formatAdd(
+        document.getElementById("add")
+    );
+
+
+    if (!validasiOrder()) {
+        return;
+    }
+
+
+    const tanggal =
         document
             .getElementById("tanggal")
-            .value =
-            tahun +
-            "-" +
-            bulan +
-            "-" +
-            hari;
+            .value;
 
-
-
-        /* Default SPH = MINUS */
-
+    const nama =
         document
-            .getElementById("minusKanan")
-            .classList.add("active");
+            .getElementById("nama")
+            .value
+            .trim();
 
-
+    const umur =
         document
-            .getElementById("minusKiri")
-            .classList.add("active");
+            .getElementById("umur")
+            .value
+            .trim();
 
-    };
 
+    const sphKanan =
+        document
+            .getElementById("sphKanan")
+            .value
+            .trim();
+
+    const cylKanan =
+        document
+            .getElementById("cylKanan")
+            .value
+            .trim();
+
+    const axisKanan =
+        ambilAxis("axisKanan");
+
+
+    const sphKiri =
+        document
+            .getElementById("sphKiri")
+            .value
+            .trim();
+
+    const cylKiri =
+        document
+            .getElementById("cylKiri")
+            .value
+            .trim();
+
+    const axisKiri =
+        ambilAxis("axisKiri");
+
+
+    const add =
+        document
+            .getElementById("add")
+            .value
+            .trim();
+
+
+    /*
+       INI YANG MEMPERBAIKI BUG LENSA
+    */
+
+    const lensa =
+        ambilNamaLensa();
+
+
+    /*
+       INI YANG MEMPERBAIKI BUG LAB
+    */
+
+    const pilihLab =
+        document.getElementById(
+            "pilihLab"
+        );
+
+    const labId =
+        pilihLab.value;
+
+    let namaLab = "";
+
+    if (labId) {
+
+        const lab =
+            daftarLab.find(
+                function(item) {
+
+                    return String(item.id) ===
+                        String(labId);
+                }
+            );
+
+        if (lab) {
+            namaLab = lab.name;
+        }
+    }
+
+
+    const keterangan =
+        document
+            .getElementById("keterangan")
+            .value
+            .trim();
+
+
+    const tanggalTampil =
+        tanggal
+            ? formatTanggalIndonesia(
+                tanggal
+            )
+            : "-";
+
+
+    const orderText =
+`ORDER LENSA
+════════════════
+OPTIK LEMBUSWANA
+Dibuat oleh Ozi • V1.1
+
+Tanggal : ${tanggalTampil}
+Nama    : ${nama || "-"}
+Umur    : ${umur ? umur + " tahun" : "-"}
+
+MATA KANAN (OD)
+SPH  : ${sphKanan || "-"}
+CYL  : ${cylKanan || "-"}
+AXIS : ${axisKanan ? axisKanan + "°" : "-"}
+
+MATA KIRI (OS)
+SPH  : ${sphKiri || "-"}
+CYL  : ${cylKiri || "-"}
+AXIS : ${axisKiri ? axisKiri + "°" : "-"}
+
+ADD : ${add || "-"}
+
+Lensa : ${lensa || "-"}
+Lab   : ${namaLab || "-"}
+
+Keterangan :
+${keterangan || "-"}
+════════════════`;
+
+
+    const hasil =
+        document.getElementById(
+            "hasilOrder"
+        );
+
+
+    hasil.textContent =
+        orderText;
+
+    hasil.dataset.orderText =
+        orderText;
+
+
+    hasil.style.display =
+        "block";
+
+
+    document
+        .getElementById("orderActions")
+        .classList
+        .add("show");
+
+
+    hasil.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
+
+
+/* =========================================================
+   FORMAT TANGGAL
+========================================================= */
+
+function formatTanggalIndonesia(
+    tanggal
+) {
+
+    const bagian =
+        tanggal.split("-");
+
+    if (
+        bagian.length !== 3
+    ) {
+        return tanggal;
+    }
+
+    return (
+        bagian[2] +
+        "-" +
+        bagian[1] +
+        "-" +
+        bagian[0]
+    );
+}
+
+
+/* =========================================================
+   COPY
+========================================================= */
+
+async function salinDanKirimManual() {
+
+    const hasil =
+        document.getElementById(
+            "hasilOrder"
+        );
+
+    const orderText =
+        hasil.dataset.orderText ||
+        hasil.textContent;
+
+    if (!orderText) {
+
+        tampilToast(
+            "Buat order terlebih dahulu."
+        );
+
+        return;
+    }
+
+    try {
+
+        await navigator
+            .clipboard
+            .writeText(orderText);
+
+        tampilToast(
+            "Order sudah disalin. Buka WhatsApp dan tempel."
+        );
+
+    } catch(error) {
+
+        console.error(error);
+
+        tampilToast(
+            "Gagal menyalin order."
+        );
+    }
+}
+
+
+/* =========================================================
+   KIRIM WA
+========================================================= */
+
+function kirimLangsungKeWA() {
+
+    const hasil =
+        document.getElementById(
+            "hasilOrder"
+        );
+
+    const orderText =
+        hasil.dataset.orderText ||
+        hasil.textContent;
+
+    if (!orderText) {
+
+        tampilToast(
+            "Buat order terlebih dahulu."
+        );
+
+        return;
+    }
+
+
+    const pilihLab =
+        document.getElementById(
+            "pilihLab"
+        );
+
+    const id =
+        pilihLab.value;
+
+    if (!id) {
+
+        tampilToast(
+            "Pilih lab terlebih dahulu."
+        );
+
+        pilihLab.focus();
+
+        return;
+    }
+
+
+    const lab =
+        daftarLab.find(
+            function(item) {
+
+                return String(item.id) ===
+                    String(id);
+            }
+        );
+
+
+    if (!lab) {
+
+        tampilToast(
+            "Data lab tidak ditemukan."
+        );
+
+        return;
+    }
+
+
+    const nomor =
+        normalisasiWhatsApp(
+            lab.whatsapp
+        );
+
+
+    if (!nomor) {
+
+        tampilToast(
+            "Nomor WhatsApp lab tidak valid."
+        );
+
+        return;
+    }
+
+
+    const url =
+        "https://wa.me/" +
+        nomor +
+        "?text=" +
+        encodeURIComponent(
+            orderText
+        );
+
+
+    window.open(
+        url,
+        "_blank"
+    );
+}
+
+
+/* =========================================================
+   MANAGEMENT TOGGLE
+========================================================= */
+
+function toggleManagement(
+    id,
+    buttonId
+) {
+
+    const element =
+        document.getElementById(id);
+
+    const button =
+        document.getElementById(buttonId);
+
+    element.classList.toggle(
+        "show"
+    );
+
+    if (
+        element.classList.contains(
+            "show"
+        )
+    ) {
+
+        button.textContent =
+            "Tutup";
+
+    } else {
+
+        button.textContent =
+            "Buka";
+    }
+}
+
+
+/* =========================================================
+   BUKA KELOLA LAB
+========================================================= */
+
+function bukaKelolaLab() {
+
+    const element =
+        document.getElementById(
+            "labManagement"
+        );
+
+    if (
+        !element.classList.contains(
+            "show"
+        )
+    ) {
+
+        toggleManagement(
+            "labManagement",
+            "toggleLabButton"
+        );
+    }
+
+    document
+        .getElementById("labManagement")
+        .scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function bukaModal(id) {
+
+    const modal =
+        document.getElementById(id);
+
+    if (modal) {
+
+        modal.classList.add(
+            "show"
+        );
+    }
+}
+
+
+function tutupModal(id) {
+
+    const modal =
+        document.getElementById(id);
+
+    if (modal) {
+
+        modal.classList.remove(
+            "show"
+        );
+    }
+}
+
+
+/* =========================================================
+   TANGGAL
+========================================================= */
+
+function setTanggalHariIni() {
+
+    const sekarang =
+        new Date();
+
+    const tahun =
+        sekarang.getFullYear();
+
+    const bulan =
+        String(
+            sekarang.getMonth() + 1
+        ).padStart(2,"0");
+
+    const hari =
+        String(
+            sekarang.getDate()
+        ).padStart(2,"0");
+
+    document
+        .getElementById("tanggal")
+        .value =
+        tahun +
+        "-" +
+        bulan +
+        "-" +
+        hari;
+}
+
+
+/* =========================================================
+   KLIK LUAR HASIL LENSA
+========================================================= */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        const search =
+            document.getElementById(
+                "cariLensa"
+            );
+
+        const results =
+            document.getElementById(
+                "lensResults"
+            );
+
+        if (
+            event.target !== search &&
+            !results.contains(
+                event.target
+            )
+        ) {
+
+            results.classList.remove(
+                "show"
+            );
+        }
+    }
+);
+
+
+/* =========================================================
+   KLIK LUAR MODAL
+========================================================= */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target.classList
+                .contains(
+                    "modal-overlay"
+                )
+        ) {
+
+            event.target
+                .classList
+                .remove("show");
+        }
+    }
+);
+
+
+/* =========================================================
+   INIT
+========================================================= */
+
+window.addEventListener(
+    "load",
+    async function() {
+
+        setTanggalHariIni();
+
+        /*
+           Tanda belum dipilih.
+           Jadi saat pertama buka:
+           SPH/CYL benar-benar kosong.
+        */
+
+        tandaSphKanan = "";
+        tandaSphKiri = "";
+
+        tandaCylKanan = "";
+        tandaCylKiri = "";
+
+        updateTombolTanda(
+            "minusSphKanan",
+            "plusSphKanan",
+            ""
+        );
+
+        updateTombolTanda(
+            "minusSphKiri",
+            "plusSphKiri",
+            ""
+        );
+
+        updateTombolTanda(
+            "minusCylKanan",
+            "plusCylKanan",
+            ""
+        );
+
+        updateTombolTanda(
+            "minusCylKiri",
+            "plusCylKiri",
+            ""
+        );
+
+
+        await Promise.all([
+            loadLensa(),
+            loadLab()
+        ]);
+    }
+);
 
 </script>
 
